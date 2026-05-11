@@ -1,17 +1,22 @@
 import { ChatOpenAI } from "@langchain/openai";
 import axios from "axios";
-import { BaseMessage, createAgent, tool } from "langchain";
+import {
+  BaseMessage,
+  createAgent,
+  createMiddleware,
+  SystemMessage,
+  tool,
+} from "langchain";
 import z from "zod";
 
 const BASE_URL = process.env.BASE_URL;
 
 const model = new ChatOpenAI({
-  model: "google/gemini-3-flash-preview",
-  apiKey: process.env.OPEN_ROUTER_API_KEY,
+  model: process.env.OPEN_AI_MODEL,
+  apiKey: process.env.OPEN_AI_API_KEY,
   configuration: {
-    baseURL: "https://openrouter.ai/api/v1",
+    baseURL: process.env.OPEN_AI_BASE_URL,
   },
-  temperature: 0,
 });
 
 const getQuantDataTool = tool(
@@ -68,10 +73,25 @@ const systemPrompt = `
 - Never start with "As a quant expert" or similar preambles.
 `;
 
+const openAICompatibleModelMiddleware = createMiddleware({
+  name: "openai-compatible-model",
+  wrapModelCall: async (request) => {
+    const runnable = model.bindTools(request.tools);
+
+    return runnable.invoke([
+      ...(request.systemPrompt
+        ? [new SystemMessage(request.systemPrompt)]
+        : []),
+      ...request.messages,
+    ]);
+  },
+});
+
 const agent = createAgent({
   model,
   tools: [getQuantDataTool],
   systemPrompt,
+  middleware: [openAICompatibleModelMiddleware],
 });
 
 export async function invokeAgent(
