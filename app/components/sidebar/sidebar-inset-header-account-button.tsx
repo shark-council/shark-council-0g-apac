@@ -14,7 +14,7 @@ import {
 } from "../ui/dropdown-menu";
 
 // TODO: Display actual wallet balance
-export function SidebarInsetHeaderWalletButton() {
+export function SidebarInsetHeaderAccountButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -25,7 +25,7 @@ export function SidebarInsetHeaderWalletButton() {
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col items-start">
-            <p>Demo Wallet</p>
+            <p>Account</p>
             <p className="text-xs text-muted-foreground">
               {formatAddress(accountConfig.walletAddress)}
             </p>
