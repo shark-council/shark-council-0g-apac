@@ -3,7 +3,7 @@ import { generatePrivateKey, privateKeyToAccount } from "viem/accounts";
 
 export async function POST() {
   try {
-    console.log("[Accounts API] Handling post request...");
+    console.log("[Account Generator API] Handling post request...");
 
     const privateKey = generatePrivateKey();
     const account = privateKeyToAccount(privateKey);
@@ -11,7 +11,10 @@ export async function POST() {
 
     return createSuccessApiResponse({ address, privateKey });
   } catch (error) {
-    console.error("[Executor API] Failed to handle post request,", error);
+    console.error(
+      "[Account Generator API] Failed to handle post request,",
+      error,
+    );
     return createFailedApiResponse({ message: "Internal server error" }, 500);
   }
 }
