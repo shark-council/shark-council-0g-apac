@@ -1,6 +1,6 @@
 # 🦈 Shark Council (0G APAC) - App
 
-This is a Next.js app for Shark Council.
+This is a Next.js project for Shark Council.
 
 ## 🧱 Stack
 
