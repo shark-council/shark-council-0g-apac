@@ -36,5 +36,6 @@ This is a Next.js project for Shark Council.
 ## 📄 Template for .env.local file
 
 ```shell
+BASE_URL=""
 OPEN_ROUTER_API_KEY=""
 ```
