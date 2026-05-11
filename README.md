@@ -18,7 +18,7 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 
 <!-- TODO: Fill in -->
 
-...
+- App - https://shark-council-0g-apac-app.vercel.app/
 
 ## 📂 Structure
 
