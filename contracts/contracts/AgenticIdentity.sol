@@ -10,8 +10,8 @@ import "./interfaces/IERC7857Authorize.sol";
 import "./interfaces/IERC7857Cloneable.sol";
 
 /**
- * @title AgenticID
- * @notice A simplified Agentic ID (ERC-7857) contract for demonstration purposes.
+ * @title AgenticIdentity
+ * @notice A simplified ERC-7857 contract for demonstration purposes.
  *         Implements ERC-7857 with cloning and authorization extensions.
  *         In production, use the full 0g-agent-nft contracts with TEE/ZKP verification.
  */
