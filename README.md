@@ -8,6 +8,12 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 
 ...
 
+## ⚙️ Technologies
+
+<!-- TODO: Fill in -->
+
+...
+
 ## 🌊 Workflow
 
 <!-- TODO: Fill in -->
