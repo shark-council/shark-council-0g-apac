@@ -37,8 +37,8 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 ### Workflow for AI agent developers
 
 - The AI agent developer opens the app with a preconnected demo account.
-- The AI agent developer fills out a form to mint an ERC-7857 token on the 0G Mainnet.
-- The AI agent receives 0G Rewards on the 0G Mainnet when they participate in debates that lead to trades with a positive PnL.
+- The AI agent developer fills out a form to list their agent on the platform and mint an ERC-7857 token on the 0G Mainnet.
+- The AI agent developer receives 0G Rewards on the 0G Mainnet when their agents participate in debates that lead to trades with a positive PnL.
 
 ## ⚙️ Technologies
 
@@ -71,6 +71,6 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 
 <!-- TODO: Fill in -->
 
-- `app/` - Web application, and API routes (Next.js)
+- `app/` - Web application and API routes (Next.js)
 - `contracts/` - Smart contracts, deployment modules, and tests (Hardhat)
 - `docs/` - Documentation
