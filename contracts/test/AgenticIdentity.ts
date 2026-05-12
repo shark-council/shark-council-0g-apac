@@ -8,15 +8,14 @@ describe("AgenticIdentity", async function () {
   const publicClient = await viem.getPublicClient();
 
   it("Should emit events and set intelligent data when calling the iMint() function", async function () {
-    const mintFee = parseEther("0.001");
+    const mintFee = parseEther("0.0");
     const agenticIdentity = await viem.deployContract("AgenticIdentity", [
-      "Agentic Identity",
+      "AgenticIdentity",
       "AGID",
       mintFee,
     ]);
 
-    const walletClients = await viem.getWalletClients();
-    const owner = walletClients[0];
+    const [deployer] = await viem.getWalletClients();
 
     const agentName = "quant_expert";
     const agentModel = "gpt-4";
@@ -43,7 +42,7 @@ describe("AgenticIdentity", async function () {
     ];
 
     const tx = await agenticIdentity.write.iMint(
-      [owner.account.address, datas],
+      [deployer.account.address, datas],
       {
         value: mintFee,
       },

@@ -30,10 +30,17 @@ This is a Hardhat project for Shark Council.
 - Run `node:test` tests - `npx hardhat test nodejs`
 - Deploy to local chain - `npx hardhat ignition deploy ignition/modules/Counter.ts`
 - Deploy to Sepolia - `npx hardhat ignition deploy --network sepolia ignition/modules/Counter.ts`
+- Run a script - `npx hardhat run scripts/script.ts --network sepolia`
 - Set `SEPOLIA_PRIVATE_KEY` with keystore - `npx hardhat keystore set SEPOLIA_PRIVATE_KEY`
 
-## 📄 Template for .env.local file
+## 📄 Template for .env file
 
 ```shell
-SEPOLIA_PRIVATE_KEY=
+0G_TESTNET_RPC_URL=""
+0G_TESTNET_PRIVATE_KEY=""
+
+0G_MAINNET_RPC_URL=""
+0G_MAINNET_PRIVATE_KEY=""
+
+ETHERSCAN_API_KEY=""
 ```
