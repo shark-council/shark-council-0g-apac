@@ -24,4 +24,6 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 
 <!-- TODO: Fill in -->
 
-...
+- `app/` - Web application, and API routes (Next.js)
+- `contracts/` - Smart contracts, deployment modules, and tests (Hardhat)
+- `docs/` - Documentation
