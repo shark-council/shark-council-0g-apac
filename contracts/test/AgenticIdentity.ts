@@ -8,7 +8,7 @@ describe("AgenticIdentity", async function () {
   const publicClient = await viem.getPublicClient();
 
   it("Should emit events and set intelligent data when calling the iMint() function", async function () {
-    const mintFee = parseEther("0.0");
+    const mintFee = parseEther("0.1");
     const agenticIdentity = await viem.deployContract("AgenticIdentity", [
       "AgenticIdentity",
       "AGID",
@@ -69,7 +69,7 @@ describe("AgenticIdentity", async function () {
   });
 
   it("Should allow operator to update reputation and non-operator to fail", async function () {
-    const mintFee = parseEther("0.0");
+    const mintFee = parseEther("0.1");
     const agenticIdentity = await viem.deployContract("AgenticIdentity", [
       "AgenticIdentity",
       "AGID",

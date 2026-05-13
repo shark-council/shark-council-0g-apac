@@ -13,7 +13,7 @@ async function main() {
   const contract = await viem.deployContract("AgenticIdentity", [
     "AgenticIdentity",
     "AGID",
-    parseEther("0.0"),
+    parseEther("0.1"),
   ]);
   console.log("Contract address:", contract.address);
 
