@@ -6,11 +6,11 @@ import { createPublicClient, http } from "viem";
 
 async function fetchAgents(): Promise<Agent[]> {
   const publicClient = createPublicClient({
-    chain: zerogConfig.chain.chain,
+    chain: zerogConfig.chain,
     transport: http(zerogConfig.storage.rpcUrl),
   });
 
-  const contractAddress = zerogConfig.chain.contracts.agenticIdentity;
+  const contractAddress = zerogConfig.contracts.agenticIdentity;
 
   // 1. Get total supply
   const totalSupply = await publicClient.readContract({

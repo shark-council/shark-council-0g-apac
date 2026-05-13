@@ -19,11 +19,9 @@ const zerogTestnet = defineChain({
 });
 
 export const zerogConfig = {
-  chain: {
-    chain: zerogTestnet,
-    contracts: {
-      agenticIdentity: "0x0bba59267714475341dbea7e76da4b4483386d91",
-    },
+  chain: zerogTestnet,
+  contracts: {
+    agenticIdentity: "0x0bba59267714475341dbea7e76da4b4483386d91",
   },
   storage: {
     rpcUrl: "https://evmrpc-testnet.0g.ai",

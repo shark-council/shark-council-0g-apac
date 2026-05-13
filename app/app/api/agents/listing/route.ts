@@ -38,13 +38,13 @@ export async function POST(request: NextRequest) {
     const account = privateKeyToAccount(accountPrivateKey);
     const walletClient = createWalletClient({
       account,
-      chain: zerogConfig.chain.chain,
+      chain: zerogConfig.chain,
       transport: http(zerogConfig.storage.rpcUrl),
     }).extend(publicActions);
 
     // Get mint fee
     const mintFee = await walletClient.readContract({
-      address: zerogConfig.chain.contracts.agenticIdentity,
+      address: zerogConfig.contracts.agenticIdentity,
       abi: agenticIdentityAbi,
       functionName: "mintFee",
     });
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
 
     // Mint agentic identity
     const { request: iMintRequest } = await walletClient.simulateContract({
-      address: zerogConfig.chain.contracts.agenticIdentity,
+      address: zerogConfig.contracts.agenticIdentity,
       abi: agenticIdentityAbi,
       functionName: "iMint",
       args: [account.address, datas],
@@ -101,7 +101,7 @@ export async function POST(request: NextRequest) {
     // Set token URI
     const { request: setTokenURIRequest } = await walletClient.simulateContract(
       {
-        address: zerogConfig.chain.contracts.agenticIdentity,
+        address: zerogConfig.contracts.agenticIdentity,
         abi: agenticIdentityAbi,
         functionName: "setTokenURI",
         args: [tokenId, tokenURI],

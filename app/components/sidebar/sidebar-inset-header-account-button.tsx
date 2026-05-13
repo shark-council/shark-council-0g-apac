@@ -49,7 +49,7 @@ export function SidebarInsetHeaderAccountButton() {
           <DropdownMenuItem asChild>
             <Link
               href={
-                zerogConfig.chain.chain.blockExplorers.default.url +
+                zerogConfig.chain.blockExplorers.default.url +
                 "/address/" +
                 accountAddress
               }
