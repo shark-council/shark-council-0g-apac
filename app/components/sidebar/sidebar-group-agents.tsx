@@ -62,7 +62,7 @@ export function SidebarGroupAgents() {
                     <BotIcon />
                   </AvatarFallback>
                 </Avatar>
-                <p>{agent.id}</p>
+                <p>{agent.identity.name}</p>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
