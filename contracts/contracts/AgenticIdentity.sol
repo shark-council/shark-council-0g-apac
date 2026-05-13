@@ -53,18 +53,18 @@ contract AgenticIdentity is
     // tokenId => creator address
     mapping(uint256 => address) public tokenCreator;
 
-    event MintFeeUpdated(uint256 oldFee, uint256 newFee);
+    event MintFeeUpdated(uint256 oldMintFee, uint256 newMintFee);
     event DelegateAccessSet(address indexed owner, address indexed assistant);
 
     constructor(
-        string memory initName,
-        string memory initSymbol,
-        uint256 initMintFee
-    ) ERC721(initName, initSymbol) {
+        string memory name_,
+        string memory symbol_,
+        uint256 mintFee_
+    ) ERC721(name_, symbol_) {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(OPERATOR_ROLE, msg.sender);
-        mintFee = initMintFee;
+        mintFee = mintFee_;
         creator = msg.sender;
     }
 
@@ -104,12 +104,12 @@ contract AgenticIdentity is
     function iMintWithRole(
         address to,
         IntelligentData[] calldata datas,
-        address _creator
+        address creator_
     ) external onlyRole(MINTER_ROLE) returns (uint256) {
         uint256 tokenId = _nextTokenId++;
         _safeMint(to, tokenId);
         _setIntelligentData(tokenId, datas);
-        tokenCreator[tokenId] = _creator;
+        tokenCreator[tokenId] = creator_;
         return tokenId;
     }
 
@@ -308,10 +308,12 @@ contract AgenticIdentity is
     // Admin
     // =========================================================================
 
-    function setMintFee(uint256 newFee) external onlyRole(DEFAULT_ADMIN_ROLE) {
-        uint256 oldFee = mintFee;
-        mintFee = newFee;
-        emit MintFeeUpdated(oldFee, newFee);
+    function setMintFee(
+        uint256 newMintFee
+    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        uint256 oldMintFee = mintFee;
+        mintFee = newMintFee;
+        emit MintFeeUpdated(oldMintFee, newMintFee);
     }
 
     function pause() external onlyRole(OPERATOR_ROLE) {
