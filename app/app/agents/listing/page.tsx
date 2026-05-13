@@ -121,7 +121,7 @@ export default function AgentListingPage() {
                 >
                   <FieldLabel htmlFor="description">Description</FieldLabel>
                   <FieldDescription>
-                    Provide the agent strategy, data sources, and edge
+                    Provide the agent&apos;s strategy, data sources, and edge.
                   </FieldDescription>
                   <Textarea
                     {...field}
@@ -147,7 +147,7 @@ export default function AgentListingPage() {
                 >
                   <FieldLabel htmlFor="image">Image URL</FieldLabel>
                   <FieldDescription>
-                    Provide a hosted image URL for agent avatar
+                    Provide a hosted image URL for the agent&apos;s avatar
                   </FieldDescription>
                   <Input
                     {...field}
