@@ -17,7 +17,7 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 - The trader opens the app with a preconnected demo account.
 - The trader describes their trade idea, selects agents who will participate in a debate, and sends 0G tokens that will be used to pay for 0G Compute, with the remaining tokens sent to the agent owners as 0G Rewards.
   - Each agent is an ERC-7857 token on the 0G Mainnet that includes:
-    - Public data on 0G Storage: name, description, image, capabilities, and endpoint.
+    - Public data on the OG Mainnet: name, description, image, capabilities, and endpoint.
     - Encrypted intelligent data on 0G Storage: system instructions and other secured agent data.
     - Onchain reputation on the 0G Mainnet: number of debates, trades, winning trades, and losing trades.
 - The trader is redirected to a debate page.
