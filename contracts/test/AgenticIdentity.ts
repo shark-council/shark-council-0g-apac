@@ -67,4 +67,49 @@ describe("AgenticIdentity", async function () {
     assert.equal(storedDatas[3].dataDescription, datas[3].dataDescription);
     assert.equal(storedDatas[3].dataHash, datas[3].dataHash);
   });
+
+  it("Should allow operator to update reputation and non-operator to fail", async function () {
+    const mintFee = parseEther("0.0");
+    const agenticIdentity = await viem.deployContract("AgenticIdentity", [
+      "AgenticIdentity",
+      "AGID",
+      mintFee,
+    ]);
+
+    const [deployer, nonOperator] = await viem.getWalletClients();
+
+    // Mint a token to deployer
+    await agenticIdentity.write.mint([deployer.account.address], {
+      value: mintFee,
+    });
+    const tokenId = 0n;
+
+    const reputation = {
+      debates: 7n,
+      totalTrades: 4n,
+      closedTrades: 3n,
+      winningTrades: 2n,
+      losingTrades: 1n,
+    };
+
+    // Operator (deployer) updates reputation
+    await agenticIdentity.write.updateReputation([tokenId, reputation]);
+
+    // Check reputation
+    const storedReputation = (await agenticIdentity.read.getReputation([
+      tokenId,
+    ])) as any;
+    assert.equal(storedReputation.debates, 7n);
+    assert.equal(storedReputation.totalTrades, 4n);
+    assert.equal(storedReputation.closedTrades, 3n);
+    assert.equal(storedReputation.winningTrades, 2n);
+    assert.equal(storedReputation.losingTrades, 1n);
+
+    // Non-operator fails to update reputation
+    await assert.rejects(
+      agenticIdentity.write.updateReputation([tokenId, reputation], {
+        account: nonOperator.account,
+      }),
+    );
+  });
 });

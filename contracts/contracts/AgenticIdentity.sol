@@ -23,6 +23,14 @@ contract AgenticIdentity is
     IERC7857Authorize,
     IERC7857Cloneable
 {
+    struct Reputation {
+        uint256 debates;
+        uint256 totalTrades;
+        uint256 closedTrades;
+        uint256 winningTrades;
+        uint256 losingTrades;
+    }
+
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant OPERATOR_ROLE = keccak256("OPERATOR_ROLE");
 
@@ -32,6 +40,9 @@ contract AgenticIdentity is
 
     // tokenId => intelligent data
     mapping(uint256 => IntelligentData[]) private _intelligentData;
+
+    // tokenId => reputation
+    mapping(uint256 => Reputation) private _reputations;
 
     // tokenId => token URI
     mapping(uint256 => string) private _tokenURIs;
@@ -53,6 +64,7 @@ contract AgenticIdentity is
     // tokenId => creator address
     mapping(uint256 => address) public tokenCreator;
 
+    event ReputationUpdated(uint256 indexed tokenId, Reputation reputation);
     event MintFeeUpdated(uint256 oldMintFee, uint256 newMintFee);
     event DelegateAccessSet(address indexed owner, address indexed assistant);
 
@@ -280,6 +292,26 @@ contract AgenticIdentity is
     function revokeDelegateAccess() external {
         delete delegatedAssistant[msg.sender];
         emit DelegateAccessSet(msg.sender, address(0));
+    }
+
+    // =========================================================================
+    // Reputation
+    // =========================================================================
+
+    function getReputation(
+        uint256 tokenId
+    ) external view returns (Reputation memory) {
+        require(_ownerOf(tokenId) != address(0), "Token does not exist");
+        return _reputations[tokenId];
+    }
+
+    function updateReputation(
+        uint256 tokenId,
+        Reputation calldata reputation
+    ) external onlyRole(OPERATOR_ROLE) {
+        require(_ownerOf(tokenId) != address(0), "Token does not exist");
+        _reputations[tokenId] = reputation;
+        emit ReputationUpdated(tokenId, reputation);
     }
 
     // =========================================================================
