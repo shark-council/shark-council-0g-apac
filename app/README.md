@@ -36,6 +36,13 @@ This is a Next.js project for Shark Council.
 ## 📄 Template for .env.local file
 
 ```shell
+NEXT_PUBLIC_ACCOUNT_ADDRESS=""
+
 BASE_URL=""
-OPEN_ROUTER_API_KEY=""
+
+OPEN_AI_MODEL=""
+OPEN_AI_API_KEY=""
+OPEN_AI_BASE_URL=""
+
+ACCOUNT_PRIVATE_KEY=""
 ```

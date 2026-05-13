@@ -9,7 +9,10 @@ import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 
@@ -27,28 +30,42 @@ export function SidebarInsetHeaderAccountButton() {
           <div className="flex flex-col items-start">
             <p>Account</p>
             <p className="text-xs text-muted-foreground">
-              {formatAddress(accountConfig.walletAddress)}
+              {formatAddress(accountConfig.address)}
             </p>
           </div>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-full">
-        <DropdownMenuItem asChild>
-          <Link href={accountConfig.baseBlockchainExplorer} target="_blank">
-            <GlobeIcon /> Base Blockchain Explorer
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <Link
-            href={accountConfig["0gTestnetBlockchainExplorer"]}
-            target="_blank"
-          >
-            <GlobeIcon /> 0G Testnet Blockchain Explorer
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem disabled={true}>
-          <LogOutIcon /> Log Out
-        </DropdownMenuItem>
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>Blockchain Explorers</DropdownMenuLabel>
+          <DropdownMenuItem asChild>
+            <Link
+              href={accountConfig["0gMainnetBlockchainExplorer"]}
+              target="_blank"
+            >
+              <GlobeIcon /> 0G Mainnet
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link
+              href={accountConfig["0gTestnetBlockchainExplorer"]}
+              target="_blank"
+            >
+              <GlobeIcon /> 0G Testnet
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href={accountConfig.baseBlockchainExplorer} target="_blank">
+              <GlobeIcon /> Base
+            </Link>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem disabled={true}>
+            <LogOutIcon /> Log Out
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );
