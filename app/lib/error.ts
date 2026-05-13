@@ -3,12 +3,17 @@ import { toast } from "sonner";
 
 export function handleError(args: {
   error: unknown;
+  errorContext?: string;
   toastTitle?: string;
   toastMessage?: string;
 }) {
-  console.error("[Error Lib] Error handled,", args.error);
+  if (args.errorContext) {
+    console.error(`[Error Lib] ${args.errorContext},`, args.error);
+  } else {
+    console.error("[Error Lib]", args.error);
+  }
   toast.error(args.toastTitle || "Something went wrong", {
-    description: args.toastMessage,
+    description: args.toastMessage || "Please try again later",
   });
 }
 
