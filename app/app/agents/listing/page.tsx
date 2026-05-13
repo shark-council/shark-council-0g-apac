@@ -45,7 +45,7 @@ export default function AgentListingPage() {
         "Anti-hype charting expert. Ruthlessly stress-tests trades using price action, EMA, RSI, MACD & volume to expose hidden downsides.",
       image:
         "https://shark-council-0g-apac-app.vercel.app/images/agents/quant-expert.png",
-      capabilities: ["quant", "charting", "crypto"],
+      capabilities: ["altFINS", "DEX Screener"],
       endpoint:
         "https://shark-council-0g-apac-app.vercel.app/api/agents/quant-expert",
       intelligentData: JSON.stringify({
