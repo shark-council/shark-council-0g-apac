@@ -19,11 +19,11 @@ export default function IndexPage() {
           className="w-full rounded-md"
         />
         {/* Title */}
-        <h1 className="text-3xl font-semibold tracking-tight text-balance text-center mt-8">
+        <h2 className="text-3xl font-semibold tracking-tight text-balance text-center mt-8">
           Let <span className="text-primary">0G Sharks</span>, built by elite{" "}
           <span className="text-accent">0G Developers</span>, debate and execute
           your trade ideas
-        </h1>
+        </h2>
         {/* Form */}
         <Skeleton className="h-12 mt-8" />
       </div>
