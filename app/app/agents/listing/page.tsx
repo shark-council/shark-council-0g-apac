@@ -26,7 +26,11 @@ export default function AgentListingPage() {
     name: z.string().min(1, "Name is required"),
     description: z.string().min(1, "Description is required"),
     image: z.url("Enter a valid image URL"),
+    capabilities: z
+      .array(z.string())
+      .min(1, "At least one capability is required"),
     endpoint: z.url("Enter a valid agent endpoint URL"),
+    intelligentData: z.string(),
   });
 
   // TODO: Clear the default values
@@ -38,8 +42,16 @@ export default function AgentListingPage() {
         "Anti-hype charting expert. Ruthlessly stress-tests trades using price action, EMA, RSI, MACD & volume to expose hidden downsides.",
       image:
         "https://shark-council-0g-apac-app.vercel.app/images/agents/quant-expert.png",
+      capabilities: ["quant", "charting", "crypto"],
       endpoint:
         "https://shark-council-0g-apac-app.vercel.app/api/agents/quant-expert",
+      intelligentData: JSON.stringify(
+        {
+          systemPrompt: "You are a Quant Expert...",
+        },
+        null,
+        2,
+      ),
     },
   });
 
@@ -165,6 +177,41 @@ export default function AgentListingPage() {
               )}
             />
             <Controller
+              name="capabilities"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field
+                  data-invalid={fieldState.invalid}
+                  data-disabled={isSubmitting}
+                >
+                  <FieldLabel htmlFor="capabilities">Capabilities</FieldLabel>
+                  <FieldDescription>
+                    Provide comma-separated capabilities for the agent
+                  </FieldDescription>
+                  <Input
+                    {...field}
+                    id="capabilities"
+                    aria-invalid={fieldState.invalid}
+                    disabled={isSubmitting}
+                    placeholder="quant, charting, crypto"
+                    autoComplete="off"
+                    onChange={(e) =>
+                      field.onChange(
+                        e.target.value
+                          .split(",")
+                          .map((t) => t.trim())
+                          .filter(Boolean),
+                      )
+                    }
+                    value={field.value?.join(", ") || ""}
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+            <Controller
               name="endpoint"
               control={form.control}
               render={({ field, fieldState }) => (
@@ -184,6 +231,35 @@ export default function AgentListingPage() {
                     disabled={isSubmitting}
                     placeholder="https://shark-council-0g-apac-app.vercel.app/api/agents/quant-expert"
                     autoComplete="off"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+            <Controller
+              name="intelligentData"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field
+                  data-invalid={fieldState.invalid}
+                  data-disabled={isSubmitting}
+                >
+                  <FieldLabel htmlFor="intelligentData">
+                    Intelligent Data
+                  </FieldLabel>
+                  <FieldDescription>
+                    Provide intelligent data in JSON format
+                  </FieldDescription>
+                  <Textarea
+                    {...field}
+                    id="intelligentData"
+                    aria-invalid={fieldState.invalid}
+                    disabled={isSubmitting}
+                    placeholder='{"key": "value"}'
+                    autoComplete="off"
+                    value={field.value || ""}
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
