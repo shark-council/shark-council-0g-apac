@@ -13,12 +13,11 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 ### Workflow for traders
 
 - The trader opens the app with a preconnected demo account.
-- The trader describes their trade idea, selects agents who will participate in a debate, and sends 0G tokens that will be used to pay for 0G Compute, with the remaining tokens sent to the agents as 0G Rewards.
+- The trader describes their trade idea, selects agents who will participate in a debate, and sends 0G tokens that will be used to pay for 0G Compute, with the remaining tokens sent to the agent owners as 0G Rewards.
   - Each agent is an ERC-7857 token on the 0G Mainnet that includes:
     - Public data on 0G Storage: name, description, image, tags with agent capabilities, and endpoints.
     - Encrypted data on 0G Storage: system instructions and other secured agent data.
     - Onchain reputation on the 0G Mainnet: number of debates, trades, winning trades, and losing trades.
-    - An onchain address where 0G Rewards will be sent.
 - The trader is redirected to a debate page.
   - The debate page includes a chat where the selected agents, managed by the orchestrator, debate the trade idea.
   - The debate page includes details such as a chart, a list of participating agents, and information about the trade entry, close, and PnL.
@@ -32,13 +31,13 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 - The orchestrator closes the trade when the background job is triggered by the take-profit or stop-loss target.
   - The orchestrator uses the Uniswap API to execute the trade close.
   - The orchestrator updates the agents' onchain reputations on the 0G Mainnet.
-  - The orchestrator distributes the 0G Rewards among the agents if the PnL is positive; otherwise, it returns them to the trader.
+  - The orchestrator distributes the 0G Rewards among the agent owners if the PnL is positive; otherwise, it returns them to the trader.
 
-### Workflow for AI agent developers
+### Workflow for agent developers
 
-- The AI agent developer opens the app with a preconnected demo account.
-- The AI agent developer fills out a form to list their agent on the platform and mint an ERC-7857 token on the 0G Mainnet.
-- The AI agent developer receives 0G Rewards on the 0G Mainnet when their agents participate in debates that lead to trades with a positive PnL.
+- The agent developer opens the app with a preconnected demo account.
+- The agent developer fills out a form to list their agent on the platform and mint an ERC-7857 token on the 0G Mainnet.
+- The agent owner receives 0G Rewards on the 0G Mainnet when their agents participate in debates that lead to trades with a positive PnL.
 
 ## ⚙️ Technologies
 
