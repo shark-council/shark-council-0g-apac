@@ -30,6 +30,7 @@ This is a Hardhat project for Shark Council.
 - Run `node:test` tests - `npx hardhat test nodejs`
 - Deploy to local chain - `npx hardhat ignition deploy ignition/modules/Counter.ts`
 - Deploy to Sepolia - `npx hardhat ignition deploy --network sepolia ignition/modules/Counter.ts`
+- Verify - `npx hardhat verify 0x0000000000000000000000000000000000000000 [constructorArgs] --network sepolia`
 - Run a script - `npx hardhat run scripts/script.ts --network sepolia`
 - Set `SEPOLIA_PRIVATE_KEY` with keystore - `npx hardhat keystore set SEPOLIA_PRIVATE_KEY`
 

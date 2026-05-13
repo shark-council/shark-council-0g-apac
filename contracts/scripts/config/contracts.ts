@@ -1,5 +1,5 @@
 export const contractsConfig = {
   "0gTestnet": {
-    agenticIdentity: "0x3fd101f7722e9b4168bff1ea17d51759196ea80d",
+    agenticIdentity: "0x0bba59267714475341dbea7e76da4b4483386d91",
   },
 };
