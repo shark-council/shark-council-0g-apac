@@ -1,6 +1,7 @@
 "use client";
 
-import { accountConfig } from "@/config/account";
+import { zerogConfig } from "@/config/0g";
+import { baseConfig } from "@/config/base";
 import { formatAddress } from "@/lib/utils";
 import { GlobeIcon, LogOutIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
@@ -15,9 +16,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import { Spinner } from "../ui/spinner";
 
 // TODO: Display actual wallet balance
 export function SidebarInsetHeaderAccountButton() {
+  const accountAddress = process.env.NEXT_PUBLIC_ACCOUNT_ADDRESS;
+
+  if (!accountAddress) {
+    return <Spinner className="mx-1" />;
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -30,7 +38,7 @@ export function SidebarInsetHeaderAccountButton() {
           <div className="flex flex-col items-start">
             <p>Account</p>
             <p className="text-xs text-muted-foreground">
-              {formatAddress(accountConfig.address)}
+              {formatAddress(accountAddress)}
             </p>
           </div>
         </Button>
@@ -40,22 +48,25 @@ export function SidebarInsetHeaderAccountButton() {
           <DropdownMenuLabel>Blockchain Explorers</DropdownMenuLabel>
           <DropdownMenuItem asChild>
             <Link
-              href={accountConfig["0gMainnetBlockchainExplorer"]}
+              href={
+                zerogConfig.chain.chain.blockExplorers.default.url +
+                "/address/" +
+                accountAddress
+              }
               target="_blank"
             >
-              <GlobeIcon /> 0G Mainnet
+              <GlobeIcon /> 0G
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link
-              href={accountConfig["0gTestnetBlockchainExplorer"]}
+              href={
+                baseConfig.chain.blockExplorers.default.url +
+                "/address/" +
+                accountAddress
+              }
               target="_blank"
             >
-              <GlobeIcon /> 0G Testnet
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href={accountConfig.baseBlockchainExplorer} target="_blank">
               <GlobeIcon /> Base
             </Link>
           </DropdownMenuItem>
