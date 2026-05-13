@@ -1,4 +1,32 @@
+import { defineChain } from "viem";
+
+const zerogTestnet = defineChain({
+  id: 16602,
+  name: "0G Testnet",
+  nativeCurrency: { name: "0G", symbol: "0G", decimals: 18 },
+  rpcUrls: {
+    default: {
+      http: ["https://evmrpc-testnet.0g.ai"],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: "0G Testnet Scan",
+      url: "https://chainscan-galileo.0g.ai",
+    },
+  },
+  testnet: true,
+});
+
 export const zerogConfig = {
-  storageRpcUrl: "https://evmrpc-testnet.0g.ai",
-  storageIndexerRpc: "https://indexer-storage-testnet-turbo.0g.ai",
-};
+  chain: {
+    chain: zerogTestnet,
+    contracts: {
+      agenticIdentity: "0x0bba59267714475341dbea7e76da4b4483386d91",
+    },
+  },
+  storage: {
+    rpcUrl: "https://evmrpc-testnet.0g.ai",
+    indexerRpc: "https://indexer-storage-testnet-turbo.0g.ai",
+  },
+} as const;
