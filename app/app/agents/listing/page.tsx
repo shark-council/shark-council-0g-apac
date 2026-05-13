@@ -15,12 +15,14 @@ import { handleError } from "@/lib/error";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
 
 export default function AgentListingPage() {
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const formSchema = z.object({
@@ -60,10 +62,9 @@ export default function AgentListingPage() {
       await axios.post("/api/agents/listing", data);
 
       toast.success("Agent listed");
-      form.reset();
+      router.push(`/`);
     } catch (error) {
       handleError({ error, errorContext: "Failed to list agent" });
-    } finally {
       setIsSubmitting(false);
     }
   }
