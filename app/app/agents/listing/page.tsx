@@ -29,7 +29,7 @@ export default function AgentListingPage() {
     endpoint: z.url("Enter a valid agent endpoint URL"),
   });
 
-  // TODO: Delete default values
+  // TODO: Clear the default values
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
