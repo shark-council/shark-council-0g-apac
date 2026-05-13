@@ -13,6 +13,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
 import { handleError } from "@/lib/error";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -30,7 +31,7 @@ export default function AgentListingPage() {
       .array(z.string())
       .min(1, "At least one capability is required"),
     endpoint: z.url("Enter a valid agent endpoint URL"),
-    intelligentData: z.string(),
+    intelligentData: z.string().min(1, "Intelligent data is required"),
   });
 
   // TODO: Clear the default values
@@ -45,13 +46,9 @@ export default function AgentListingPage() {
       capabilities: ["quant", "charting", "crypto"],
       endpoint:
         "https://shark-council-0g-apac-app.vercel.app/api/agents/quant-expert",
-      intelligentData: JSON.stringify(
-        {
-          systemPrompt: "You are a Quant Expert...",
-        },
-        null,
-        2,
-      ),
+      intelligentData: JSON.stringify({
+        systemPrompt: "You are a Quant Expert...",
+      }),
     },
   });
 
@@ -60,7 +57,7 @@ export default function AgentListingPage() {
       console.log("[Component] Listing agent...");
       setIsSubmitting(true);
 
-      await new Promise((resolve) => setTimeout(resolve, 3_000));
+      await axios.post("/api/agents/listing", data);
 
       toast.success("Agent listed");
       form.reset();
