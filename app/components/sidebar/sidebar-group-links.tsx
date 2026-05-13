@@ -14,6 +14,9 @@ export function SidebarGroupLinks() {
       <SidebarGroupLabel>Links</SidebarGroupLabel>
       <SidebarMenu>
         <SidebarMenuItem>
+          <SidebarMenuButton disabled={true}>Marketplace</SidebarMenuButton>
+        </SidebarMenuItem>
+        <SidebarMenuItem>
           <SidebarMenuButton asChild>
             <Link href={appConfig.gitHubUrl} target="_blank">
               GitHub
