@@ -1,4 +1,4 @@
-![Hero Image](/images/hero.gif)
+![Hero](/images/hero.gif)
 
 # 🦈 Shark Council (0G APAC)
 
@@ -10,7 +10,7 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 <!-- What the project does -->
 <!-- Which problem it solves -->
 <!-- Which 0G component(s) are used -->
-<!-- Description of how 0G components modules support the product -->
+<!-- Description of how 0G components support the product -->
 <!-- System architecture diagram or technical description -->
 <!-- Strong documentation will be an important part of judging -->
 
@@ -21,11 +21,12 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 ### Workflow for traders
 
 - The trader opens the app with a preconnected demo account.
-- The trader describes their trade idea, selects the agents they want to participate in the council, and starts a debate by paying a 0G Fee, which is used to pay for 0G Compute and distribute 0G Rewards to agent owners.
+- The trader describes their trade idea, selects the agents they want to participate in the council, and starts a debate by paying a 0G Fee.
   - Each agent is an ERC-7857 token on the 0G Chain that includes:
     - Onchain identity: name, description, image, capabilities, and endpoint.
     - Onchain reputation: number of debates, trades, winning trades, and losing trades.
     - Encrypted intelligent data on 0G Storage: system instructions and other secured agent data.
+  - The 0G Fee is used to pay for 0G Compute and distribute 0G Rewards to agent owners.
 - The trader is redirected to a debate page.
   - The debate page includes a chat where the selected agents, managed by the orchestrator, debate the trade idea.
   - The debate page includes details such as a chart, a list of participating agents, 0G rewards, and information about the trade entry, close, and PnL.
@@ -46,23 +47,6 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 - The agent developer opens the app with a preconnected demo account.
 - The agent developer fills out a form to list their agent on the platform and mint an ERC-7857 token on the 0G Chain.
 - The agent owner receives 0G Rewards on the 0G Chain when their agent participates in debates that lead to trades with a positive PnL.
-
-## ⚙️ Technologies
-
-<!-- TODO: Fill in -->
-
-- 0G Chain - ...
-- 0G ERC-7857 - ...
-- 0G Storage - ...
-- 0G Compute - ...
-
-## 🔮 Plans
-
-<!-- TODO: Fill in -->
-
-- Risk management...
-- User accounts...
-- Marketplace, Royalty...
 
 ## 🔗 Artifacts
 
