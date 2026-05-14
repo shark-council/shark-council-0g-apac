@@ -1,6 +1,12 @@
 import { uniswapConfig } from "@/config/uniswap";
 import { ChatOpenAI } from "@langchain/openai";
-import { BaseMessage, createAgent, tool } from "langchain";
+import {
+  BaseMessage,
+  createAgent,
+  createMiddleware,
+  SystemMessage,
+  tool,
+} from "langchain";
 import z from "zod";
 import {
   getAccountAddress,
@@ -10,12 +16,11 @@ import {
 import { executeUniswapSwap } from "../uniswap";
 
 const model = new ChatOpenAI({
-  model: "google/gemini-3-flash-preview",
-  apiKey: process.env.OPEN_ROUTER_API_KEY,
+  model: process.env.OPEN_AI_MODEL,
+  apiKey: process.env.OPEN_AI_API_KEY,
   configuration: {
-    baseURL: "https://openrouter.ai/api/v1",
+    baseURL: process.env.OPEN_AI_BASE_URL,
   },
-  temperature: 0,
 });
 
 const getAccountAddressTool = tool(
@@ -187,17 +192,32 @@ const systemPrompt = `
 - Your answers and actions must be based strictly on the output and capabilities of your tools.
 `;
 
+const openAICompatibleModelMiddleware = createMiddleware({
+  name: "openai-compatible-model",
+  wrapModelCall: async (request) => {
+    const runnable = model.bindTools(request.tools);
+
+    return runnable.invoke([
+      ...(request.systemPrompt
+        ? [new SystemMessage(request.systemPrompt)]
+        : []),
+      ...request.messages,
+    ]);
+  },
+});
+
 const agent = createAgent({
   model,
   tools: [
     getAccountAddressTool,
-    getUniswapSwapChainTool,
-    getUniswapSwapTokensTool,
     getAccountNativeBalanceTool,
     getAccountTokenBalanceTool,
+    getUniswapSwapChainTool,
+    getUniswapSwapTokensTool,
     executeUniswapSwapTool,
   ],
   systemPrompt,
+  middleware: [openAICompatibleModelMiddleware],
 });
 
 export async function invokeAgent(

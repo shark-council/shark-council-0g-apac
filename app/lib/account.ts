@@ -3,11 +3,11 @@ import { createPublicClient, erc20Abi, formatEther, http } from "viem";
 import * as viemChains from "viem/chains";
 
 export function getAccount(): PrivateKeyAccount {
-  const PRIVATE_KEY = process.env.PRIVATE_KEY;
-  if (!PRIVATE_KEY) {
-    throw new Error("PRIVATE_KEY is not set");
+  const accountPrivateKey = process.env.ACCOUNT_PRIVATE_KEY;
+  if (!accountPrivateKey) {
+    throw new Error("ACCOUNT_PRIVATE_KEY is not set");
   }
-  return privateKeyToAccount(PRIVATE_KEY as `0x${string}`);
+  return privateKeyToAccount(accountPrivateKey as `0x${string}`);
 }
 
 export function getAccountAddress(): `0x${string}` {
