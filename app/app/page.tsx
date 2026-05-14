@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/field";
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
+import { debateConfig } from "@/config/debate";
 import { useAgents } from "@/hooks/use-agents";
 import { handleError } from "@/lib/error";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -33,10 +34,10 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { formatUnits } from "viem";
 import z from "zod";
 
 // TODO: Allow selection of active agents only
-// TODO: Add information about 0G Fee
 export default function IndexPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -271,7 +272,12 @@ export default function IndexPage() {
               disabled={isSubmitting || isLoading}
             >
               {isSubmitting && <Spinner />}
-              Start roasting
+              Start Debate (
+              {formatUnits(
+                debateConfig.defaultFee.tokenAmount,
+                debateConfig.defaultFee.tokenDecimals,
+              )}{" "}
+              0G Fee)
             </Button>
           </FieldGroup>
         </form>
