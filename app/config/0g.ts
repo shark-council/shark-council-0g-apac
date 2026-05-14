@@ -23,6 +23,10 @@ export const zerogConfig = {
   contracts: {
     agenticIdentity: "0x0bba59267714475341dbea7e76da4b4483386d91",
   },
+  compute: {
+    model: "qwen/qwen-2.5-7b-instruct",
+    baseUrl: "https://router-api-testnet.integratenetwork.work/v1",
+  },
   storage: {
     rpcUrl: "https://evmrpc-testnet.0g.ai",
     indexerRpc: "https://indexer-storage-testnet-turbo.0g.ai",

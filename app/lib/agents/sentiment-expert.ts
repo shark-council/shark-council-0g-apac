@@ -1,3 +1,4 @@
+import { zerogConfig } from "@/config/0g";
 import { ChatOpenAI } from "@langchain/openai";
 import axios from "axios";
 import {
@@ -12,10 +13,10 @@ import z from "zod";
 const BASE_URL = process.env.BASE_URL;
 
 const model = new ChatOpenAI({
-  model: process.env.OPEN_AI_MODEL,
-  apiKey: process.env.OPEN_AI_API_KEY,
+  model: zerogConfig.compute.model,
+  apiKey: process.env["0G_COMPUTE_API_KEY"],
   configuration: {
-    baseURL: process.env.OPEN_AI_BASE_URL,
+    baseURL: zerogConfig.compute.baseUrl,
   },
 });
 
