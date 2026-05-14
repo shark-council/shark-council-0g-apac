@@ -18,7 +18,6 @@ import {
 } from "../ui/dropdown-menu";
 import { Spinner } from "../ui/spinner";
 
-// TODO: Display actual wallet balance
 export function SidebarInsetHeaderAccountButton() {
   const accountAddress = process.env.NEXT_PUBLIC_ACCOUNT_ADDRESS;
 
