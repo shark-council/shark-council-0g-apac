@@ -1,3 +1,17 @@
+export type DebateFee = {
+  chainName: string;
+  tokenSymbol: string;
+  tokenDecimals: number;
+  tokenAmount: bigint;
+};
+
+export type DebateAgentReward = {
+  chainName: string;
+  tokenSymbol: string;
+  tokenDecimals: number;
+  tokenAmount: bigint;
+};
+
 export type DebateChatMessageRole =
   | "user"
   | "orchestrator"
@@ -13,33 +27,48 @@ export type DebateChatMessage = {
   content: string;
 };
 
+export type DebateUniswapTradeStatus = "pending" | "open" | "closed";
+
+export type DebateDexScreenerData = {
+  chainName: string;
+  pairAddress: string;
+};
+
+export type DebateUniswapTradeEntry = {
+  date: Date;
+  tokenPrice: number;
+  tokenAmount: bigint;
+  transactionHash: string;
+  transactionUrl: string;
+};
+
+export type DebateUniswapTradeExit = {
+  date: Date;
+  tokenPrice: number;
+  tokenAmount: bigint;
+  transactionHash: string;
+  transactionUrl: string;
+};
+
+export type DebateUniswapTrade = {
+  chainName: string;
+  tokenSymbol: string;
+  tokenDecimals: number;
+  tokenAddress: string;
+  tokenUrl: string;
+  status: DebateUniswapTradeStatus;
+  dexScreenerData?: DebateDexScreenerData;
+  entry?: DebateUniswapTradeEntry;
+  exit?: DebateUniswapTradeExit;
+  pnlPercentage?: number;
+};
+
 export type Debate = {
   id: string;
-  idea: string;
+  fee: DebateFee;
   agentIds: string[];
-  agentRewardTokenSymbol: string;
-  agentRewardTokenAmount: number;
+  agentReward: DebateAgentReward;
+  idea: string;
   messages: DebateChatMessage[];
-  dexScreenerUrl?: string;
-  uniswapTrade?: {
-    chain: string;
-    tokenSymbol: string;
-    tokenUrl: string;
-    status: "Open" | "Closed";
-    entry: {
-      date: Date;
-      tokenPrice: number;
-      tokenAmount: number;
-      transactionHash: string;
-      transactionUrl: string;
-    };
-    exit?: {
-      date: Date;
-      tokenPrice: number;
-      tokenAmount: number;
-      transactionHash: string;
-      transactionUrl: string;
-      pnlPercentage: number;
-    };
-  };
+  uniswapTrade?: DebateUniswapTrade;
 };

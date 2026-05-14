@@ -3,11 +3,12 @@ import {
   SidebarGroupAction,
   SidebarGroupLabel,
   SidebarMenu,
+  SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { debateConfig } from "@/config/debate";
 import { Plus } from "lucide-react";
 import Link from "next/link";
-import { Spinner } from "../ui/spinner";
 
 export function SidebarGroupDebates() {
   return (
@@ -19,12 +20,15 @@ export function SidebarGroupDebates() {
         </Link>
       </SidebarGroupAction>
       <SidebarMenu>
-        <SidebarMenuItem>
-          <div className="flex items-center gap-2 p-2">
-            <Spinner />
-            <p className="text-sm text-muted-foreground">Loading...</p>
-          </div>
-        </SidebarMenuItem>
+        {debateConfig.demoDebates.map((debate, index) => (
+          <SidebarMenuItem key={index}>
+            <SidebarMenuButton asChild>
+              <Link href={`/debates/${debate.id}`}>
+                <span>{debate.idea}</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        ))}
       </SidebarMenu>
     </SidebarGroup>
   );
