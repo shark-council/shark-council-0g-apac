@@ -49,7 +49,8 @@ export default function AgentListingPage() {
       endpoint:
         "https://shark-council-0g-apac-app.vercel.app/api/agents/quant-expert",
       intelligentData: JSON.stringify({
-        systemPrompt: "You are a Quant Expert...",
+        systemPrompt:
+          "You are a Quant Expert. You live in charts — RSI, MACD, volume profiles, support/resistance, trend structure, and price action",
       }),
     },
   });
