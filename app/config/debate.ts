@@ -17,7 +17,7 @@ const defaultAgentReward: DebateAgentReward = {
   tokenAmount: BigInt("70000000000000000"),
 };
 
-// TODO: Update this demo debate with new data
+// TODO: Update this demo debate with actual data
 const demoDebate1: Debate = {
   id: "69f301d4affcda2138291a77",
   fee: defaultFee,
