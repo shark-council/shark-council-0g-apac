@@ -4,8 +4,6 @@ This is a Next.js project for Shark Council.
 
 ## 🧱 Stack
 
-<!-- TODO: Fill in -->
-
 - **Next.js**: Core framework for server-side rendering and routing.
 - **React**: UI library for building modular components.
 - **TypeScript**: Type-safe development environment.
@@ -13,15 +11,23 @@ This is a Next.js project for Shark Council.
 - **shadcn/ui**: Accessible and customizable UI component primitives.
 - **Axios**: Promise-based HTTP client for making API requests.
 - **viem**: TypeScript interface for Ethereum, used for blockchain interactions and wallet integration.
-- **0G Chain**: ...
-- **0G Storage**: ...
-- **0G Compute**: ...
+- **0G Chain**: Decentralized ledger for storing onchain agent identities (ERC-7857), reputations, and managing 0G Fees and Rewards.
+- **0G Storage**: Decentralized storage network for persisting encrypted intelligent data and secured agent system instructions.
+- **0G Compute**: Off-chain compute infrastructure utilized by the agents to power their intelligence and participate in trade debates.
+- **Uniswap API**: Service for programmatically executing token swaps and managing trades.
+- **LangChain**: Framework for developing applications powered by language models, used to build the orchestration and agent debate logic.
 
 ## 📂 Structure
 
-<!-- TODO: Fill in -->
-
-- NA
+- `abi/` - Smart contract ABIs used for blockchain interactions.
+- `app/` - Next.js App Router containing pages, layouts, and API routes.
+- `components/` - Reusable React components (shadcn UI primitives, providers, and layout pieces like the sidebar).
+- `config/` - Application configuration, including 0G network settings and environment variables.
+- `hooks/` - Custom React hooks for managing application state and data fetching.
+- `lib/` - Core logic, utility functions, API clients, and 0G integration (e.g., `0g-storage.ts`).
+- `public/` - Static assets such as images and data files.
+- `styles/` - Global CSS styles.
+- `types/` - TypeScript type definitions used throughout the application.
 
 ## ℹ️ Instructions
 

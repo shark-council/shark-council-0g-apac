@@ -4,21 +4,20 @@ This is a Hardhat project for Shark Council.
 
 ## 🧱 Stack
 
-<!-- TODO: Fill in -->
-
 - **Hardhat 3 Beta**: Ethereum development environment.
 - **Solidity**: Object-oriented programming language for smart contracts.
 - **TypeScript**: Type-safe development environment.
 - **viem**: TypeScript interface for Ethereum.
 - **node:test**: Node.js native test runner.
-- **0G Chain**: ...
-- **0G ERC-7857**: ...
+- **0G Chain**: EVM-compatible blockchain where smart contracts are deployed to manage agent identities, reputations, and rewards.
+- **0G ERC-7857**: Token standard used to represent agents as non-fungible tokens, defining their onchain identity and metadata.
 
 ## 📂 Structure
 
-<!-- TODO: Fill in -->
-
-- NA
+- `contracts/` - Solidity smart contracts (including ERC-7857 implementation) and interfaces.
+- `ignition/` - Hardhat Ignition deployment modules for declarative contract deployments.
+- `scripts/` - Utility scripts for configuration, executing specific transactions, and custom deployments.
+- `test/` - Node.js and Solidity-based tests to verify contract behavior and logic.
 
 ## ℹ️ Instructions
 

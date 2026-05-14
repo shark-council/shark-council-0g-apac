@@ -16,6 +16,16 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 
 ...
 
+## 📈 Traction
+
+<!-- TODO: Fill in -->
+
+<!-- This is one of the strongest differentiators in our judging framework -->
+<!-- Waitlist or sign-ups — with source (Twitter, friends-of-friends, cold outreach, etc.) -->
+<!-- Format tip: a short "Traction" section in your README with concrete numbers + screenshots beats vague claims. "3 users used it twice this week" > "strong product-market fit." -->
+
+...
+
 ## 🌊 Workflow
 
 ### Workflow for traders
@@ -61,8 +71,6 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
   - ...
 
 ## 📂 Structure
-
-<!-- TODO: Fill in -->
 
 - `app/` - Web application and API routes (Next.js)
 - `contracts/` - Smart contracts, deployment modules, and tests (Hardhat)
