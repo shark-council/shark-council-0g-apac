@@ -1,12 +1,7 @@
+import { openRouterConfig } from "@/config/open-router";
 import { uniswapConfig } from "@/config/uniswap";
 import { ChatOpenAI } from "@langchain/openai";
-import {
-  BaseMessage,
-  createAgent,
-  createMiddleware,
-  SystemMessage,
-  tool,
-} from "langchain";
+import { BaseMessage, createAgent, tool } from "langchain";
 import z from "zod";
 import {
   getAccountAddress,
@@ -14,13 +9,12 @@ import {
   getAccountTokenBalance,
 } from "../account";
 import { executeUniswapSwap } from "../uniswap";
-import { zerogConfig } from "@/config/0g";
 
 const model = new ChatOpenAI({
-  model: zerogConfig.compute.model,
-  apiKey: process.env["0G_COMPUTE_API_KEY"],
+  model: openRouterConfig.model,
+  apiKey: process.env.OPEN_ROUTER_API_KEY,
   configuration: {
-    baseURL: zerogConfig.compute.baseUrl,
+    baseURL: openRouterConfig.baseUrl,
   },
 });
 
@@ -193,20 +187,6 @@ const systemPrompt = `
 - Your answers and actions must be based strictly on the output and capabilities of your tools.
 `;
 
-const openAICompatibleModelMiddleware = createMiddleware({
-  name: "openai-compatible-model",
-  wrapModelCall: async (request) => {
-    const runnable = model.bindTools(request.tools);
-
-    return runnable.invoke([
-      ...(request.systemPrompt
-        ? [new SystemMessage(request.systemPrompt)]
-        : []),
-      ...request.messages,
-    ]);
-  },
-});
-
 const agent = createAgent({
   model,
   tools: [
@@ -218,7 +198,6 @@ const agent = createAgent({
     executeUniswapSwapTool,
   ],
   systemPrompt,
-  middleware: [openAICompatibleModelMiddleware],
 });
 
 export async function invokeAgent(
