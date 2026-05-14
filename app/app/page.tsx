@@ -36,6 +36,7 @@ import { Controller, useForm } from "react-hook-form";
 import z from "zod";
 
 // TODO: Allow selection of active agents only
+// TODO: Add information about 0G Fee
 export default function IndexPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);

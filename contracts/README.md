@@ -11,6 +11,8 @@ This is a Hardhat project for Shark Council.
 - **TypeScript**: Type-safe development environment.
 - **viem**: TypeScript interface for Ethereum.
 - **node:test**: Node.js native test runner.
+- **0G Chain**: ...
+- **0G ERC-7857**: ...
 
 ## 📂 Structure
 

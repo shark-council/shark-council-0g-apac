@@ -13,6 +13,9 @@ This is a Next.js project for Shark Council.
 - **shadcn/ui**: Accessible and customizable UI component primitives.
 - **Axios**: Promise-based HTTP client for making API requests.
 - **viem**: TypeScript interface for Ethereum, used for blockchain interactions and wallet integration.
+- **0G Chain**: ...
+- **0G Storage**: ...
+- **0G Compute**: ...
 
 ## 📂 Structure
 

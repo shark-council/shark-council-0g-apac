@@ -4,9 +4,15 @@
 
 Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas.
 
-## ⚡ Description
+## ⚡ Overview
 
 <!-- TODO: Fill in -->
+<!-- What the project does -->
+<!-- Which problem it solves -->
+<!-- Which 0G component(s) are used -->
+<!-- Description of how 0G components modules support the product -->
+<!-- System architecture diagram or technical description -->
+<!-- Strong documentation will be an important part of judging -->
 
 ...
 
@@ -16,10 +22,10 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 
 - The trader opens the app with a preconnected demo account.
 - The trader describes their trade idea, selects the agents they want to participate in the council, and starts a debate by paying a 0G Fee, which is used to pay for 0G Compute and distribute 0G Rewards to agent owners.
-  - Each agent is an ERC-7857 token on the 0G Mainnet that includes:
-    - Public data on the OG Mainnet: name, description, image, capabilities, and endpoint.
+  - Each agent is an ERC-7857 token on the 0G Chain that includes:
+    - Onchain identity: name, description, image, capabilities, and endpoint.
+    - Onchain reputation: number of debates, trades, winning trades, and losing trades.
     - Encrypted intelligent data on 0G Storage: system instructions and other secured agent data.
-    - Onchain reputation on the 0G Mainnet: number of debates, trades, winning trades, and losing trades.
 - The trader is redirected to a debate page.
   - The debate page includes a chat where the selected agents, managed by the orchestrator, debate the trade idea.
   - The debate page includes details such as a chart, a list of participating agents, 0G rewards, and information about the trade entry, close, and PnL.
@@ -32,20 +38,20 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
   - The orchestrator starts a background job that will close the trade when the take-profit or stop-loss target is reached.
 - The orchestrator closes the trade when the background job is triggered by the take-profit or stop-loss target.
   - The orchestrator uses the Uniswap API to execute the trade close.
-  - The orchestrator updates the agents' onchain reputations on the 0G Mainnet.
-  - The orchestrator distributes the 0G Rewards among the agent owners if the PnL is positive; otherwise, it returns the rewards to the trader.
+  - The orchestrator updates the agents' onchain reputations.
+  - The orchestrator distributes the 0G Rewards among the agent owners if the PnL is positive; otherwise, it returns the tokens to the trader.
 
 ### Workflow for agent developers
 
 - The agent developer opens the app with a preconnected demo account.
-- The agent developer fills out a form to list their agent on the platform and mint an ERC-7857 token on the 0G Mainnet.
-- The agent owner receives 0G Rewards on the 0G Mainnet when their agent participates in debates that lead to trades with a positive PnL.
+- The agent developer fills out a form to list their agent on the platform and mint an ERC-7857 token on the 0G Chain.
+- The agent owner receives 0G Rewards on the 0G Chain when their agent participates in debates that lead to trades with a positive PnL.
 
 ## ⚙️ Technologies
 
 <!-- TODO: Fill in -->
 
-- 0G Mainnet - ...
+- 0G Chain - ...
 - 0G ERC-7857 - ...
 - 0G Storage - ...
 - 0G Compute - ...
@@ -66,6 +72,8 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 - Contracts (0G Mainnet)
   - ...
 - Transactions (0G Mainnet)
+  - ...
+- 0G integration proofs
   - ...
 
 ## 📂 Structure
