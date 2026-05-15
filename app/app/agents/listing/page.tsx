@@ -60,6 +60,20 @@ export default function AgentListingPage() {
     //       "You are a Sentiment Expert. You track social media, news, and on-chain data to gauge market sentiment and narrative. Your insights help traders understand the psychology driving the markets.",
     //   }),
     // },
+    // defaultValues: {
+    //   name: "Quant Expert 042",
+    //   description:
+    //     "Anti-hype charting expert. Ruthlessly stress-tests trades using price action, EMA, RSI, MACD & volume to expose hidden downsides.",
+    //   image:
+    //     "https://shark-council-0g-apac-app.vercel.app/images/agents/quant-expert.png",
+    //   capabilities: ["altFINS", "DEX Screener"],
+    //   endpoint:
+    //     "https://shark-council-0g-apac-app.vercel.app/api/agents/quant-expert",
+    //   intelligentData: JSON.stringify({
+    //     systemPrompt:
+    //       "You are a Quant Expert. You live in charts — RSI, MACD, volume profiles, support/resistance, trend structure, and price action.",
+    //   }),
+    // },
   });
 
   async function handleSubmit(data: z.infer<typeof formSchema>) {
