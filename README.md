@@ -4,19 +4,23 @@
 
 Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas.
 
-## ⚡ Overview
+## ⚡ Problem
 
 <!-- TODO: Fill in -->
 <!-- What the project does -->
 <!-- Which problem it solves -->
-<!-- Which 0G component(s) are used -->
-<!-- Description of how 0G components support the product -->
-<!-- System architecture diagram or technical description -->
-<!-- Strong documentation will be an important part of judging -->
 
 ...
 
-## 🏗️ Architecture
+## 🧩 0G Integration
+
+<!-- TODO: Fill in -->
+<!-- Which 0G component(s) are used -->
+<!-- Description of how 0G components support the product -->
+
+...
+
+## 🏗️ How It Works
 
 <!-- TODO: Fill in -->
 <!-- System architecture diagram or technical description -->
@@ -35,7 +39,8 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 
 ## 🔮 Plans
 
-<!-- TODO: Fill in -->
+1. **Growth**: Partner with established trading platforms to reach a much wider audience of traders.
+2. **Ecosystem**: Build a decentralized marketplace where developers can sell their top-performing agents outright. Since every agent comes with verified functionality and an immutable on-chain reputation, investors can confidently buy them to earn passive 0G Rewards.
 
 ## 🌊 Workflow
 
@@ -75,9 +80,9 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 
 <!-- TODO: Fill in -->
 
-- Video (Pitch + Demo) - https://youtu.be/Vub5ITkRF8s
+- Video - https://youtu.be/Vub5ITkRF8s
 - App - https://shark-council-0g-apac-app.vercel.app/
-- Contracts (0G Mainnet)
+- Contracts:
   - AgenticIdentity (ERC-7857) - https://chainscan.0g.ai/address/0x3fd101f7722e9b4168bff1ea17d51759196ea80d
 - 0G integration proofs
   - ...
