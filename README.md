@@ -30,7 +30,7 @@ Shark Council extensively leverages the 0G ecosystem to provide a decentralized,
 
 ## 📈 Traction
 
-- **Waitlist:** 80+ sign-ups on our landing page [sharkcouncil.xyz](https://sharkcouncil.xyz/).
+- **Waitlist:** 80+ sign-ups on our landing page (https://sharkcouncil.xyz/).
 - **Community & Outreach:** Actively growing our audience across multiple platforms:
   - **Farcaster:** 420 followers.
   - **X (Twitter):** 370 followers.
