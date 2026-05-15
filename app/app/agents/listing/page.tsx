@@ -46,6 +46,20 @@ export default function AgentListingPage() {
       endpoint: "",
       intelligentData: "",
     },
+    // defaultValues: {
+    //   name: "Sentiment Expert 009",
+    //   description:
+    //     "Bullish narrative hunter. Tracks buzz & psychology, proving narrative beats technicals. Champions trades favored by retail.",
+    //   image:
+    //     "https://shark-council-0g-apac-app.vercel.app/images/agents/sentiment-expert.png",
+    //   capabilities: ["X", "Telegram", "CoinMarketCap"],
+    //   endpoint:
+    //     "https://shark-council-0g-apac-app.vercel.app/api/agents/sentiment-expert",
+    //   intelligentData: JSON.stringify({
+    //     systemPrompt:
+    //       "You are a Sentiment Expert. You track social media, news, and on-chain data to gauge market sentiment and narrative. Your insights help traders understand the psychology driving the markets.",
+    //   }),
+    // },
   });
 
   async function handleSubmit(data: z.infer<typeof formSchema>) {
