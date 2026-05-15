@@ -20,6 +20,7 @@ const model = new ChatOpenAI({
   },
 });
 
+// TODO: Replace symbol enum with string
 const getSentimentDataTool = tool(
   async ({ symbol }) => {
     try {
