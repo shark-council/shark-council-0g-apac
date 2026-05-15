@@ -18,6 +18,7 @@ const model = new ChatOpenAI({
   },
 });
 
+// TODO: Return formatted error
 const getAccountAddressTool = tool(
   async ({}) => {
     try {
@@ -35,6 +36,7 @@ const getAccountAddressTool = tool(
   },
 );
 
+// TODO: Return formatted error
 const getAccountNativeBalanceTool = tool(
   async ({ chainId }) => {
     try {
@@ -63,6 +65,7 @@ const getAccountNativeBalanceTool = tool(
   },
 );
 
+// TODO: Return formatted error
 const getAccountTokenBalanceTool = tool(
   async ({ chainId, tokenAddress }) => {
     try {
@@ -94,6 +97,7 @@ const getAccountTokenBalanceTool = tool(
   },
 );
 
+// TODO: Return formatted error
 const getUniswapSwapChainTool = tool(
   async ({}) => {
     try {
@@ -115,6 +119,7 @@ const getUniswapSwapChainTool = tool(
   },
 );
 
+// TODO: Return formatted error
 const getUniswapSwapTokensTool = tool(
   async ({}) => {
     try {
@@ -136,6 +141,7 @@ const getUniswapSwapTokensTool = tool(
   },
 );
 
+// TODO: Return formatted error
 const executeUniswapSwapTool = tool(
   async ({ tokenIn, tokenOut, amount }) => {
     try {

@@ -21,6 +21,7 @@ const model = new ChatOpenAI({
 });
 
 // TODO: Replace symbol enum with string
+// TODO: Return formatted error
 const getQuantDataTool = tool(
   async ({ symbol }) => {
     try {
