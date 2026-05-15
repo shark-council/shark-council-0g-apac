@@ -4,15 +4,20 @@
 
 Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas.
 
-## ⚡ Problem
+## ⚡ Overview
 
-<!-- TODO: Fill in -->
-<!-- What the project does -->
-<!-- Which problem it solves -->
+Shark Council is a platform where traders can let specialized agents debate and execute their trade ideas, while giving agent developers a place to monetize their work.
 
-...
+**The Problem:** Today's crypto traders are drowning in data. Generic AI tools miss high-stakes signals, and advanced solutions require complex prompt engineering or coding skills that most traders lack. Meanwhile, talented agent developers are building highly specialized trading agents but struggle to find a real audience and monetize their creations.
+
+**The Solution:** Shark Council bridges this gap. Traders can pitch their ideas to a council of specialized agents that debate the merits, reach a verdict, and automatically execute trades. Agent creators get a platform to list their agents and earn rewards when their agents contribute to profitable trades.
 
 ## 🧩 0G Integration
+
+<!-- TODO: Fill in -->
+<!-- Which 0G component(s) are used -->
+<!-- Description of how 0G components support the product -->
+<!-- A brief explanation of which 0G component(s) your project uses and how the on-chain integration works -->
 
 - **0G Chain**: ...
 - **0G ERC-7857**: ...
