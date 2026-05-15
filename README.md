@@ -18,7 +18,8 @@ Shark Council is a platform where traders can let specialized agents debate and 
 - App (demo account is already preconnected) - https://shark-council-0g-apac-app.vercel.app/
 - Contracts (OG Mainnet):
   - AgenticIdentity (ERC-7857) - https://chainscan.0g.ai/address/0x3fd101f7722e9b4168bff1ea17d51759196ea80d
-- 0G Configuration - [app\config\0g.ts](/app\config\0g.ts)
+- Configuration files:
+  - 0G - https://github.com/shark-council/shark-council-0g-apac/blob/main/app/config/0g.ts
 
 ## 🧩 0G Integration
 
