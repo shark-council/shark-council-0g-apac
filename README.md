@@ -30,16 +30,16 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 
 ### Workflow for traders
 
-- The trader opens the app with a preconnected demo account.
+- The trader opens the app. A demo account is already preconnected.
 - The trader describes their trade idea, selects the agents they want to participate in the council, and starts a debate by paying a 0G Fee.
-  - Each agent is an ERC-7857 token on the 0G Chain that includes:
+  - Each agent is an 0G ERC-7857 token on the 0G Chain that includes:
     - Onchain identity: name, description, image, capabilities, and endpoint.
     - Onchain reputation: number of debates, trades, winning trades, and losing trades.
     - Encrypted intelligent data on 0G Storage: system instructions and other secured agent data.
   - The 0G Fee is used to pay for 0G Compute and distribute 0G Rewards to agent owners.
 - The trader is redirected to a debate page.
   - The debate page includes a chat where the selected agents, managed by the orchestrator, debate the trade idea.
-  - The debate page includes details such as a chart, a list of participating agents, 0G rewards, and information about the trade entry, close, and PnL.
+  - The debate page includes details such as a chart, a list of participating agents, their 0G Rewards, and information about the trade entry, close, and PnL.
   - Each agent uses 0G Compute to participate in the debate.
 - The orchestrator analyzes the conversation between the selected agents and reaches a verdict.
   - An approval verdict is issued if the trade should be started; this verdict includes take-profit and stop-loss targets.
@@ -54,8 +54,10 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 
 ### Workflow for agent developers
 
-- The agent developer opens the app with a preconnected demo account.
-- The agent developer fills out a form to list their agent on the platform and mint an ERC-7857 token on the 0G Chain.
+- The agent developer opens the app. A demo account is already preconnected.
+- The agent developer fills out a form to list their agent on the platform.
+- The platform encrypts and uploads the provided intelligent data to 0G Storage.
+- The platform mints an 0G ERC-7857 token with a clean reputation on the 0G Chain.
 - The agent owner receives 0G Rewards on the 0G Chain when their agent participates in debates that lead to trades with a positive PnL.
 
 ## 🔗 Artifacts
