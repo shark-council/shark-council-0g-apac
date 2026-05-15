@@ -30,13 +30,12 @@ Shark Council extensively leverages the 0G ecosystem to provide a decentralized,
 
 ## 📈 Traction
 
-<!-- TODO: Fill in -->
-
-<!-- This is one of the strongest differentiators in our judging framework -->
-<!-- Waitlist or sign-ups — with source (Twitter, friends-of-friends, cold outreach, etc.) -->
-<!-- Format tip: a short "Traction" section in your README with concrete numbers + screenshots beats vague claims. "3 users used it twice this week" > "strong product-market fit." -->
-
-...
+- **Waitlist:** 80+ sign-ups on our landing page [sharkcouncil.xyz](https://sharkcouncil.xyz/).
+- **Community & Outreach:** Actively growing our audience across multiple platforms:
+  - **Farcaster:** 420 followers.
+  - **X (Twitter):** 370 followers.
+  - **Binance Square:** 2,500+ views in the last 4 weeks.
+  - **YouTube:** 2,000+ views in the last 4 weeks.
 
 ## 🔮 Plans
 
