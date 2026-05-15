@@ -1,5 +1,6 @@
 import { agenticIdentityAbi } from "@/abi/agentic-identity";
 import { zerogConfig } from "@/config/0g";
+import { agentConfig } from "@/config/agent";
 import { Agent, AgentIdentity, AgentReputation } from "@/types/agent";
 import { useQuery } from "@tanstack/react-query";
 import { createPublicClient, http } from "viem";
@@ -30,6 +31,10 @@ async function fetchAgents(): Promise<Agent[]> {
         functionName: "tokenByIndex",
         args: [BigInt(i)],
       });
+
+      if (agentConfig.hiddenIds.includes(tokenId)) {
+        continue;
+      }
 
       const [uri, reputation] = await Promise.all([
         publicClient.readContract({
