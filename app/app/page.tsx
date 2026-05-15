@@ -70,6 +70,8 @@ export default function IndexPage() {
         params.append("agent", agentId);
       });
 
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
       router.push(`/debates/${id.toString()}?${params.toString()}`);
     } catch (error) {
       handleError({ error, errorContext: "Failed to submit idea" });
