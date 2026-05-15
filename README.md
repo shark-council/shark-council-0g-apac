@@ -16,6 +16,13 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 
 ...
 
+## 🏗️ Architecture
+
+<!-- TODO: Fill in -->
+<!-- System architecture diagram or technical description -->
+
+...
+
 ## 📈 Traction
 
 <!-- TODO: Fill in -->
