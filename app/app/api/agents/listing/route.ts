@@ -70,6 +70,7 @@ export async function POST(request: NextRequest) {
     console.log(`[Agent Listing API] iMint transaction hash: ${iMintTxHash}`);
     const receipt = await walletClient.waitForTransactionReceipt({
       hash: iMintTxHash,
+      confirmations: 2,
     });
     console.log("[Agent Listing API] iMint transaction confirmed");
 
@@ -113,7 +114,10 @@ export async function POST(request: NextRequest) {
     console.log(
       `[Agent Listing API] setTokenURI transaction hash: ${setTokenURITxHash}`,
     );
-    await walletClient.waitForTransactionReceipt({ hash: setTokenURITxHash });
+    await walletClient.waitForTransactionReceipt({
+      hash: setTokenURITxHash,
+      confirmations: 2,
+    });
     console.log("[Agent Listing API] setTokenURI transaction confirmed");
 
     return createSuccessApiResponse({
