@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     const walletClient = createWalletClient({
       account,
       chain: zerogConfig.chain,
-      transport: http(zerogConfig.storage.rpcUrl),
+      transport: http(zerogConfig.chain.rpcUrls.default.http[0]),
     }).extend(publicActions);
 
     // Get mint fee
@@ -124,7 +124,7 @@ export async function POST(request: NextRequest) {
 
     return createSuccessApiResponse({
       tokenId: tokenId.toString(),
-      iMintTxHash: "",
+      iMintTxHash: iMintTxHash,
       setTokenURITxHash: setTokenURITxHash,
     });
   } catch (error) {
