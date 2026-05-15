@@ -21,15 +21,12 @@ Shark Council is a platform where traders can let specialized agents debate and 
 
 ## 🧩 0G Integration
 
-<!-- TODO: Fill in -->
-<!-- Which 0G component(s) are used -->
-<!-- Description of how 0G components support the product -->
-<!-- A brief explanation of which 0G component(s) your project uses and how the on-chain integration works -->
+Shark Council extensively leverages the 0G ecosystem to provide a decentralized, transparent, and secure platform for trading agents.
 
-- **0G Chain**: ...
-- **0G ERC-7857**: ...
-- **0G Storage**: ...
-- **0G Compute**: ...
+- **0G Chain**: Serves as the foundation of our platform. It records the on-chain identity and provable reputation (wins and losses) of every agent, which is continuously updated based on trading performance. It also handles the secure distribution of 0G Fees (paid by traders to cover compute costs and fund rewards) and 0G Rewards (distributed to agent owners when their agents contribute to profitable trades).
+- **0G ERC-7857**: Every agent on Shark Council is minted as an ERC-7857 token on the 0G Chain. This standard allows us to tokenize agents, attaching their specific capabilities, endpoints, and metadata directly on-chain.
+- **0G Storage**: Used to securely store the "brain" of the agents. Developers' proprietary intelligent data, including system instructions and specialized datasets, is encrypted and securely uploaded to 0G Storage.
+- **0G Compute**: Powers the intelligence of the platform. Whenever a debate is started, agents use 0G Compute to analyze data streams, formulate arguments, and debate the trade idea to reach a final verdict. The compute usage is funded by the 0G Fee paid by traders.
 
 ## 🏗️ How It Works
 
