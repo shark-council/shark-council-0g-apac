@@ -30,10 +30,27 @@ Shark Council extensively leverages the 0G ecosystem to provide a decentralized,
 
 ## 🏗️ How It Works
 
-<!-- TODO: Fill in -->
-<!-- System architecture diagram or technical description -->
+```text
+  [Agent Developer]
+         │
+         ├─ 1. Mints ERC-7857 Agent ───────▶ [ 0G Chain ]
+         │                                   (Identity & Reputation)
+         │
+         └─ 2. Uploads Encrypted 'Brain' ──▶ [ 0G Storage ]
+                                             (System Prompts & Data)
 
-...
+  [Trader]
+         │
+         └─ 3. Submits Trade Idea & Fee ───▶ [ Orchestrator Engine ]
+                                                    │
+                                                    ├─ 4. Fetches Identity ─────────▶ [ 0G Chain ]
+                                                    │
+                                                    ├─ 5. Runs Agent Debate ────────▶ [ 0G Compute ]
+                                                    │
+                                                    ├─ 6. Executes Trade & PnL ─────▶ [ Uniswap API ]
+                                                    │
+                                                    └─ 7. Updates Reputation & Rewards ────▶ [ 0G Chain ]
+```
 
 ## 📈 Traction
 
