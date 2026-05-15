@@ -35,7 +35,7 @@ export function SidebarInsetHeaderAccountButton() {
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col items-start">
-            <p>Account</p>
+            <p>Account (Demo)</p>
             <p className="text-xs text-muted-foreground">
               {formatAddress(accountAddress)}
             </p>

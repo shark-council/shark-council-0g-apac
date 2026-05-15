@@ -48,11 +48,10 @@ export default function IndexPage() {
     agents: z.array(z.string()).min(2, "Select at least two agents"),
   });
 
-  // TODO: Clear the default values
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      idea: "Is it safe to buy BTC right now considering yesterday's massive $629M institutional inflow?",
+      idea: "",
       agents: [],
     },
   });

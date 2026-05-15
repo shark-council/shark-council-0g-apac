@@ -36,22 +36,15 @@ export default function AgentListingPage() {
     intelligentData: z.string().min(1, "Intelligent data is required"),
   });
 
-  // TODO: Clear the default values
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "Quant Expert 042",
-      description:
-        "Anti-hype charting expert. Ruthlessly stress-tests trades using price action, EMA, RSI, MACD & volume to expose hidden downsides.",
-      image:
-        "https://shark-council-0g-apac-app.vercel.app/images/agents/quant-expert.png",
-      capabilities: ["altFINS", "DEX Screener"],
-      endpoint:
-        "https://shark-council-0g-apac-app.vercel.app/api/agents/quant-expert",
-      intelligentData: JSON.stringify({
-        systemPrompt:
-          "You are a Quant Expert. You live in charts — RSI, MACD, volume profiles, support/resistance, trend structure, and price action",
-      }),
+      name: "",
+      description: "",
+      image: "",
+      capabilities: [],
+      endpoint: "",
+      intelligentData: "",
     },
   });
 
@@ -256,7 +249,10 @@ export default function AgentListingPage() {
                     id="intelligentData"
                     aria-invalid={fieldState.invalid}
                     disabled={isSubmitting}
-                    placeholder='{"key": "value"}'
+                    placeholder={JSON.stringify({
+                      systemPrompt:
+                        "You are a Quant Expert. You live in charts — RSI, MACD, volume profiles, support/resistance, trend structure, and price action",
+                    })}
                     autoComplete="off"
                     value={field.value || ""}
                   />
