@@ -68,7 +68,7 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 
 <!-- TODO: Fill in -->
 
-- Video - ...
+- Video - https://youtu.be/Vub5ITkRF8s
 - App - https://shark-council-0g-apac-app.vercel.app/
 - Contracts (0G Mainnet)
   - ...
