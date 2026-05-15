@@ -1,6 +1,6 @@
 import { zerogConfig } from "@/config/0g";
-import { ethers } from "ethers";
 import { Indexer, MemData } from "@0gfoundation/0g-storage-ts-sdk";
+import { ethers } from "ethers";
 
 export async function uploadTextTo0gStorage(text: string) {
   console.log("[0G Storage Lib] Uploading text...");
@@ -13,10 +13,14 @@ export async function uploadTextTo0gStorage(text: string) {
   const data = new TextEncoder().encode(text);
   const memData = new MemData(data);
 
+  const key = crypto.getRandomValues(new Uint8Array(32));
+  console.log("[0G Storage Lib] Generated encryption key:", key);
+
   const [uploadTx, uploadError] = await indexer.upload(
     memData,
     zerogConfig.storage.rpcUrl,
     signer,
+    { encryption: { type: "aes256", key: key } },
   );
 
   if (uploadError !== null) {
@@ -24,4 +28,6 @@ export async function uploadTextTo0gStorage(text: string) {
   }
 
   console.log("[0G Storage Lib] Upload transaction:", uploadTx);
+
+  return { key: ethers.hexlify(key), uploadTx };
 }
