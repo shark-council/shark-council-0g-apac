@@ -75,12 +75,10 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 
 <!-- TODO: Fill in -->
 
-- Video - https://youtu.be/Vub5ITkRF8s
+- Video (Pitch + Demo) - https://youtu.be/Vub5ITkRF8s
 - App - https://shark-council-0g-apac-app.vercel.app/
 - Contracts (0G Mainnet)
-  - ...
-- Transactions (0G Mainnet)
-  - ...
+  - AgenticIdentity (ERC-7857) - https://chainscan.0g.ai/address/0x3fd101f7722e9b4168bff1ea17d51759196ea80d
 - 0G integration proofs
   - ...
 
