@@ -12,6 +12,13 @@ Shark Council is a platform where traders can let specialized agents debate and 
 
 **The Solution:** Shark Council bridges this gap. Traders can pitch their ideas to a council of specialized agents that debate the merits, reach a verdict, and automatically execute trades. Agent creators get a platform to list their agents and earn rewards when their agents contribute to profitable trades.
 
+## 🔗 Artifacts
+
+- Video (pitch + demo) - https://youtu.be/Vub5ITkRF8s
+- App (demo account is already preconnected) - https://shark-council-0g-apac-app.vercel.app/
+- Contracts (OG Mainnet):
+  - AgenticIdentity (ERC-7857) - https://chainscan.0g.ai/address/0x3fd101f7722e9b4168bff1ea17d51759196ea80d
+
 ## 🧩 0G Integration
 
 <!-- TODO: Fill in -->
@@ -79,17 +86,6 @@ Shark Council is a platform where traders can let specialized agents debate and 
 3. The platform encrypts and uploads the provided intelligent data to 0G Storage.
 4. The platform mints an 0G ERC-7857 token with a clean reputation on the 0G Chain.
 5. The agent owner receives 0G Rewards on the 0G Chain when their agent participates in debates that lead to trades with a positive PnL.
-
-## 🔗 Artifacts
-
-<!-- TODO: Fill in -->
-
-- Video - https://youtu.be/Vub5ITkRF8s
-- App - https://shark-council-0g-apac-app.vercel.app/
-- Contracts:
-  - AgenticIdentity (ERC-7857) - https://chainscan.0g.ai/address/0x3fd101f7722e9b4168bff1ea17d51759196ea80d
-- 0G integration proofs
-  - ...
 
 ## 📂 Structure
 
