@@ -56,6 +56,7 @@ export default function IndexPage() {
     },
   });
 
+  // TODO: Take 0G fee from user's wallet instead of just simulating it
   async function handleSubmit(data: z.infer<typeof formSchema>) {
     try {
       console.log("[Component] Submitting idea...");
