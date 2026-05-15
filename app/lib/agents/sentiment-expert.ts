@@ -14,7 +14,7 @@ const BASE_URL = process.env.BASE_URL;
 
 const model = new ChatOpenAI({
   model: zerogConfig.compute.model,
-  apiKey: process.env["0G_COMPUTE_API_KEY"],
+  apiKey: process.env.ZEROG_COMPUTE_API_KEY,
   configuration: {
     baseURL: zerogConfig.compute.baseUrl,
   },
