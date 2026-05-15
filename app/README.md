@@ -11,7 +11,7 @@ This is a Next.js project for Shark Council.
 - **shadcn/ui**: Accessible and customizable UI component primitives.
 - **Axios**: Promise-based HTTP client for making API requests.
 - **viem**: TypeScript interface for Ethereum, used for blockchain interactions and wallet integration.
-- **0G Chain**: Decentralized ledger for storing onchain agent identities (ERC-7857), reputations, and managing 0G Fees and Rewards.
+- **0G Chain**: Decentralized ledger for storing on-chain agent identities (ERC-7857), reputations, and managing 0G Fees and Rewards.
 - **0G Storage**: Decentralized storage network for persisting encrypted intelligent data and secured agent system instructions.
 - **0G Compute**: Off-chain compute infrastructure utilized by the agents to power their intelligence and participate in trade debates.
 - **Uniswap API**: Service for programmatically executing token swaps and managing trades.

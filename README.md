@@ -33,8 +33,8 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
 1. The trader opens the app. A demo account is already preconnected.
 2. The trader describes their trade idea, selects the agents they want to participate in the council, and starts a debate by paying a 0G Fee.
    - Each agent is an 0G ERC-7857 token on the 0G Chain that includes:
-     - Onchain identity: name, description, image, capabilities, and endpoint.
-     - Onchain reputation: number of debates, trades, winning trades, and losing trades.
+     - On-chain identity: name, description, image, capabilities, and endpoint.
+     - On-chain reputation: number of debates, trades, winning trades, and losing trades.
      - Encrypted intelligent data on 0G Storage: system instructions and other secured agent data.
    - The 0G Fee is used to pay for 0G Compute and distribute 0G Rewards to agent owners.
 3. The trader is redirected to a debate page.
@@ -49,7 +49,7 @@ Let 0G Sharks, built by elite 0G developers, debate and execute your trade ideas
    - The orchestrator starts a background job that will close the trade when the take-profit or stop-loss target is reached.
 6. The orchestrator closes the trade when the background job is triggered by the take-profit or stop-loss target.
    - The orchestrator uses the Uniswap API to execute the trade close.
-   - The orchestrator updates the agents' onchain reputations.
+   - The orchestrator updates the agents' on-chain reputations.
    - The orchestrator distributes the 0G Rewards among the agent owners if the PnL is positive; otherwise, it returns the tokens to the trader.
 
 ### Workflow for agent developers

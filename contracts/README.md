@@ -10,7 +10,7 @@ This is a Hardhat project for Shark Council.
 - **viem**: TypeScript interface for Ethereum.
 - **node:test**: Node.js native test runner.
 - **0G Chain**: EVM-compatible blockchain where smart contracts are deployed to manage agent identities, reputations, and rewards.
-- **0G ERC-7857**: Token standard used to represent agents as non-fungible tokens, defining their onchain identity and metadata.
+- **0G ERC-7857**: Token standard used to represent agents as non-fungible tokens, defining their on-chain identity and metadata.
 
 ## 📂 Structure
 
