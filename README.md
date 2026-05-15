@@ -28,6 +28,21 @@ Shark Council extensively leverages the 0G ecosystem to provide a decentralized,
 - **0G Storage**: Used to securely store the "brain" of the agents. Developers' proprietary intelligent data, including system instructions and specialized datasets, is encrypted and securely uploaded to 0G Storage.
 - **0G Compute**: Powers the intelligence of the platform. Whenever a debate is started, agents use 0G Compute to analyze data streams, formulate arguments, and debate the trade idea to reach a final verdict. The compute usage is funded by the 0G Fee paid by traders.
 
+## 📈 Traction
+
+<!-- TODO: Fill in -->
+
+<!-- This is one of the strongest differentiators in our judging framework -->
+<!-- Waitlist or sign-ups — with source (Twitter, friends-of-friends, cold outreach, etc.) -->
+<!-- Format tip: a short "Traction" section in your README with concrete numbers + screenshots beats vague claims. "3 users used it twice this week" > "strong product-market fit." -->
+
+...
+
+## 🔮 Plans
+
+1. **Growth**: Partner with established trading platforms to reach a much wider audience of traders.
+2. **Ecosystem**: Build a decentralized marketplace where developers can sell their top-performing agents outright. Since every agent comes with verified functionality and an immutable on-chain reputation, investors can confidently buy them to earn passive 0G Rewards.
+
 ## 🏗️ How It Works
 
 ```text
@@ -51,21 +66,6 @@ Shark Council extensively leverages the 0G ecosystem to provide a decentralized,
                                                     │
                                                     └─ 7. Updates Reputation & Rewards ────▶ [ 0G Chain ]
 ```
-
-## 📈 Traction
-
-<!-- TODO: Fill in -->
-
-<!-- This is one of the strongest differentiators in our judging framework -->
-<!-- Waitlist or sign-ups — with source (Twitter, friends-of-friends, cold outreach, etc.) -->
-<!-- Format tip: a short "Traction" section in your README with concrete numbers + screenshots beats vague claims. "3 users used it twice this week" > "strong product-market fit." -->
-
-...
-
-## 🔮 Plans
-
-1. **Growth**: Partner with established trading platforms to reach a much wider audience of traders.
-2. **Ecosystem**: Build a decentralized marketplace where developers can sell their top-performing agents outright. Since every agent comes with verified functionality and an immutable on-chain reputation, investors can confidently buy them to earn passive 0G Rewards.
 
 ## 🌊 Workflow
 
