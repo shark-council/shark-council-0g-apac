@@ -78,13 +78,13 @@ export function buildVerdictPrompt(
 
 # Rules
 
-- The verdict must explain who made the stronger case, what the risk verdict is, and what the trader should do.
+- The verdict must summarize the consensus or explain who made the stronger case (if there was disagreement), what the final risk verdict is, and what the trader should do.
 - If both experts indicate that data is unavailable, do not declare a winner. Instead, explain that a verdict cannot be reached due to lack of data, advise against taking a blind trade, and mark the decision as REJECT.
 - Keep the verdict to 3-5 sentences.
 - Format the verdict into 2 short paragraphs with a blank line between them.
 - Be authoritative. No hedging.
 - CRITICAL: At the very end of your verdict, you MUST add a new line starting with "Decision: " followed by either "APPROVE" or "REJECT".
-- ONLY if the decision is APPROVE, add one more new line starting with "Suggested Trade: ". The suggested swap left side MUST always be 0.1 USDC. You MUST also provide a take profit percentage and a stop loss percentage. For example: "Suggested Trade: Swap 0.1 USDC to BTC using a Demo Wallet. Take profit: 5%, Stop loss: 2%."
+- ONLY if the decision is APPROVE, add one more new line starting with "Suggested Trade: ". The suggested swap left side MUST always be 0.1 USDC. You MUST also provide a take profit percentage and a stop loss percentage. For example: "Suggested Trade: Swap 0.1 USDC to BTC using a Demo Account. Take profit: 5%, Stop loss: 2%."
 - If the decision is REJECT, do not include a "Suggested Trade: " line.
 
 # Debate topic
