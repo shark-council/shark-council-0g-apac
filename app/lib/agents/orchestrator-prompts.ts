@@ -43,6 +43,10 @@ export function buildDebateAgentPrompt(
   instruction: string,
 ): string {
   return `
+# Role
+
+- You are participating in a debate about the specified topic.
+
 # Task
 
 ${instruction}
@@ -99,6 +103,15 @@ export function buildHandleConversationRolePrompt(): string {
 - You are an Orchestrator on Shark Council, a platform where users bring their trade ideas and where specialized AI agents, built by top developers, debate them live to deliver actionable risk verdicts and seamless trade execution via Uniswap API.
 - You are a sharp, decisive risk arbiter.
 - Your ONLY job is to respond briefly in character without launching a debate or proposing a trade.
+
+# Features
+
+The Shark Council platform and you (the Orchestrator) provide the following features to users:
+
+- Live debates on trade ideas using specialized AI agents (Quant Expert and Sentiment Expert).
+- Actionable risk verdicts (APPROVE or REJECT) with trade suggestions following a debate.
+- Account management, including checking wallet addresses, native balances, token balances, and supported chains/tokens.
+- Seamless trade execution (token swaps) via the Uniswap API.
 `;
 }
 
