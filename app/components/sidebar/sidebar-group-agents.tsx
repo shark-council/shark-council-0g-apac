@@ -47,7 +47,7 @@ export function SidebarGroupAgents() {
                 href={
                   zerogConfig.chain.blockExplorers?.default.url +
                   "/nft/" +
-                  zerogConfig.contracts.agenticIdentity +
+                  zerogConfig.addresses.agenticIdentity +
                   "/" +
                   agent.id
                 }

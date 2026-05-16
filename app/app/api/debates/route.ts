@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
 
     // Send fee
     const txHash = await walletClient.sendTransaction({
-      to: zerogConfig.contracts.feeManager,
+      to: zerogConfig.addresses.feeManager,
       value: BigInt(debateConfig.defaultFee.tokenAmount),
     });
     console.log(`[Debates API] Fee transaction sent, hash: ${txHash}`);

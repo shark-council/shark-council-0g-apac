@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
 
     // Get mint fee
     const mintFee = await walletClient.readContract({
-      address: zerogConfig.contracts.agenticIdentity,
+      address: zerogConfig.addresses.agenticIdentity,
       abi: agenticIdentityAbi,
       functionName: "mintFee",
     });
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
 
     // Mint agentic identity
     const { request: iMintRequest } = await walletClient.simulateContract({
-      address: zerogConfig.contracts.agenticIdentity,
+      address: zerogConfig.addresses.agenticIdentity,
       abi: agenticIdentityAbi,
       functionName: "iMint",
       args: [account.address, datas],
@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
     // Set token URI
     const { request: setTokenURIRequest } = await walletClient.simulateContract(
       {
-        address: zerogConfig.contracts.agenticIdentity,
+        address: zerogConfig.addresses.agenticIdentity,
         abi: agenticIdentityAbi,
         functionName: "setTokenURI",
         args: [tokenId, tokenURI],

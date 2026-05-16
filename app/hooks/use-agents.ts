@@ -11,7 +11,7 @@ async function fetchAgents(): Promise<Agent[]> {
     transport: http(zerogConfig.chain.rpcUrls.default.http[0]),
   });
 
-  const contractAddress = zerogConfig.contracts.agenticIdentity;
+  const contractAddress = zerogConfig.addresses.agenticIdentity;
 
   // 1. Get total supply
   const totalSupply = await publicClient.readContract({
