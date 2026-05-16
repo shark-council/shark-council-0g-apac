@@ -29,18 +29,20 @@ const model = new ChatOpenAI({
 
 const determineIntentSchema = z.object({
   intent: z
-    .enum(["account-management", "debate", "conversation"])
+    .enum(["debate", "account-management", "conversation"])
     .describe("The determined intent of the user message"),
+  topic: z
+    .string()
+    .optional()
+    .describe(
+      "If intent is debate, a concise but comprehensive summary of the topic to debate. Include the specific token, the proposed action, and any reasoning provided by the user.",
+    ),
   accountManagement: z
     .string()
     .optional()
     .describe(
       "If intent is account-management, the specific instruction or request (e.g., execute swap, get address, get balance, list supported chains/tokens) to send to the account manager",
     ),
-  topic: z
-    .string()
-    .optional()
-    .describe("If intent is debate, a concise summary of the topic to debate"),
 });
 
 async function determineIntent(messages: BaseMessage[]) {
@@ -188,21 +190,11 @@ export async function* streamOrchestrator(
 ): AsyncGenerator<string> {
   const { intent, accountManagement, topic } = await determineIntent(messages);
 
-  switch (intent) {
-    case "conversation":
-      yield* handleConversation(messages);
-      break;
-    case "debate":
-      yield* handleDebate(topic || "Market Analysis or Trading Opportunity");
-      break;
-    case "account-management":
-      yield* handleAccountManagement(
-        accountManagement ||
-          "Execute the requested swap or process account management request",
-      );
-      break;
-    default:
-      yield* handleConversation(messages);
-      break;
+  if (intent === "debate" && topic) {
+    yield* handleDebate(topic);
+  } else if (intent === "account-management" && accountManagement) {
+    yield* handleAccountManagement(accountManagement);
+  } else {
+    yield* handleConversation(messages);
   }
 }

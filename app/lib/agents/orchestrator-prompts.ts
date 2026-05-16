@@ -22,9 +22,9 @@ export function buildDetermineIntentTaskPrompt(
 
 Based ONLY on the conversation history, determine the user's intent:
 
-- "conversation": The user is making a simple conversational statement (like a greeting, thanks, or general comment) that does not require account management or expert analysis.
 - "debate": The user has a trading idea about a specific token and asks for analysis, opinions, or details about a market situation that requires expert debate. Extract a clear, comprehensive topic for the debate from the history and populate 'topic'.
 - "account-management": The user is asking to execute a trade/swap, asking for account manager wallet information (address, native balance, token balance), asking about supported swap chains, or asking about supported swap tokens. Extract the actionable request or specific details into 'accountManagement'.
+- "conversation": The user is making a simple conversational statement (like a greeting, thanks, or general comment) that does not require account management or expert analysis.
 
 # Rules
 
