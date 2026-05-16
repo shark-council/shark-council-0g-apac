@@ -32,7 +32,7 @@ async function fetchAgents(): Promise<Agent[]> {
         args: [BigInt(i)],
       });
 
-      if (agentConfig.hiddenIds.includes(tokenId)) {
+      if (agentConfig.hiddenIds.includes(tokenId.toString())) {
         continue;
       }
 

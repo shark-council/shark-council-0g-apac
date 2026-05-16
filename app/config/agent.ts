@@ -1,3 +1,5 @@
+const hiddenIds: string[] = [];
+
 export const agentConfig = {
-  hiddenIds: [] as bigint[],
+  hiddenIds,
 } as const;
