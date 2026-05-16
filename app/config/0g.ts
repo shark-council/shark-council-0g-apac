@@ -78,8 +78,8 @@ const zerogConfigMainnet: zerogConfig = {
     baseUrl: "https://router-api-testnet.integratenetwork.work/v1",
   },
   storage: {
-    rpcUrl: "https://evmrpc-testnet.0g.ai",
-    indexerRpc: "https://indexer-storage-testnet-turbo.0g.ai",
+    rpcUrl: "https://evmrpc.0g.ai",
+    indexerRpc: "https://indexer-storage-turbo.0g.ai",
   },
 };
 
