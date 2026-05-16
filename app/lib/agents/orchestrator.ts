@@ -35,7 +35,7 @@ const determineIntentSchema = z.object({
     .string()
     .optional()
     .describe(
-      "If intent is account-management, the specific instruction or wallet request to send to the account manager",
+      "If intent is account-management, the specific instruction or request (e.g., execute swap, get address, get balance, list supported chains/tokens) to send to the account manager",
     ),
   topic: z
     .string()
@@ -193,11 +193,12 @@ export async function* streamOrchestrator(
       yield* handleConversation(messages);
       break;
     case "debate":
-      yield* handleDebate(topic || "Market Analysis");
+      yield* handleDebate(topic || "Market Analysis or Trading Opportunity");
       break;
     case "account-management":
       yield* handleAccountManagement(
-        accountManagement || "Process account management request",
+        accountManagement ||
+          "Execute the requested swap or process account management request",
       );
       break;
     default:
