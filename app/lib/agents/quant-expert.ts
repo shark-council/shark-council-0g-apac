@@ -9,6 +9,7 @@ import {
   tool,
 } from "langchain";
 import z from "zod";
+import { formatError } from "../error";
 
 const BASE_URL = process.env.BASE_URL;
 
@@ -21,7 +22,6 @@ const model = new ChatOpenAI({
 });
 
 // TODO: Replace symbol enum with string
-// TODO: Return formatted error
 const getQuantDataTool = tool(
   async ({ symbol }) => {
     try {
@@ -38,7 +38,7 @@ const getQuantDataTool = tool(
         `[Quant Expert] Getting quant data failed, symbol: ${symbol},`,
         error,
       );
-      return "Failed to get quant data";
+      return `Failed to get quant data, error: ${JSON.stringify(formatError(error))}`;
     }
   },
   {

@@ -9,6 +9,7 @@ import {
   tool,
 } from "langchain";
 import z from "zod";
+import { formatError } from "../error";
 
 const BASE_URL = process.env.BASE_URL;
 
@@ -21,7 +22,6 @@ const model = new ChatOpenAI({
 });
 
 // TODO: Replace symbol enum with string
-// TODO: Return formatted error
 const getSentimentDataTool = tool(
   async ({ symbol }) => {
     try {
@@ -40,7 +40,7 @@ const getSentimentDataTool = tool(
         `[Sentiment Expert] Getting sentiment data failed, symbol: ${symbol},`,
         error,
       );
-      return "Failed to get sentiment data";
+      return `Failed to get sentiment data, error: ${JSON.stringify(formatError(error))}`;
     }
   },
   {

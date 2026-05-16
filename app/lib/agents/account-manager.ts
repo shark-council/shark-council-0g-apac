@@ -9,6 +9,7 @@ import {
   getAccountTokenBalance,
 } from "../account";
 import { executeUniswapSwap } from "../uniswap";
+import { formatError } from "../error";
 
 const model = new ChatOpenAI({
   model: openRouterConfig.model,
@@ -18,7 +19,6 @@ const model = new ChatOpenAI({
   },
 });
 
-// TODO: Return formatted error
 const getAccountAddressTool = tool(
   async ({}) => {
     try {
@@ -26,7 +26,7 @@ const getAccountAddressTool = tool(
       return getAccountAddress();
     } catch (error) {
       console.error("[Account Manager] Getting account address failed,", error);
-      return "Failed to get account address";
+      return `Failed to get account address, error: ${JSON.stringify(formatError(error))}`;
     }
   },
   {
@@ -36,7 +36,6 @@ const getAccountAddressTool = tool(
   },
 );
 
-// TODO: Return formatted error
 const getAccountNativeBalanceTool = tool(
   async ({ chainId }) => {
     try {
@@ -50,7 +49,7 @@ const getAccountNativeBalanceTool = tool(
         `[Account Manager] Getting account native balance failed,`,
         error,
       );
-      return "Failed to get account native balance";
+      return `Failed to get account native balance, error: ${JSON.stringify(formatError(error))}`;
     }
   },
   {
@@ -65,7 +64,6 @@ const getAccountNativeBalanceTool = tool(
   },
 );
 
-// TODO: Return formatted error
 const getAccountTokenBalanceTool = tool(
   async ({ chainId, tokenAddress }) => {
     try {
@@ -79,7 +77,7 @@ const getAccountTokenBalanceTool = tool(
         `[Account Manager] Getting account token balance failed,`,
         error,
       );
-      return "Failed to get account token balance";
+      return `Failed to get account token balance, error: ${JSON.stringify(formatError(error))}`;
     }
   },
   {
@@ -97,7 +95,6 @@ const getAccountTokenBalanceTool = tool(
   },
 );
 
-// TODO: Return formatted error
 const getUniswapSwapChainTool = tool(
   async ({}) => {
     try {
@@ -109,7 +106,7 @@ const getUniswapSwapChainTool = tool(
         "[Account Manager] Getting Uniswap swap chain failed,",
         error,
       );
-      return "Failed to get Uniswap swap chain";
+      return `Failed to get Uniswap swap chain, error: ${JSON.stringify(formatError(error))}`;
     }
   },
   {
@@ -119,7 +116,6 @@ const getUniswapSwapChainTool = tool(
   },
 );
 
-// TODO: Return formatted error
 const getUniswapSwapTokensTool = tool(
   async ({}) => {
     try {
@@ -131,7 +127,7 @@ const getUniswapSwapTokensTool = tool(
         "[Account Manager] Getting Uniswap swap tokens failed,",
         error,
       );
-      return "Failed to get Uniswap swap tokens";
+      return `Failed to get Uniswap swap tokens, error: ${JSON.stringify(formatError(error))}`;
     }
   },
   {
@@ -141,7 +137,6 @@ const getUniswapSwapTokensTool = tool(
   },
 );
 
-// TODO: Return formatted error
 const executeUniswapSwapTool = tool(
   async ({ tokenIn, tokenOut, amount }) => {
     try {
@@ -155,7 +150,7 @@ const executeUniswapSwapTool = tool(
       return `Swap executed successfully, chain: ${JSON.stringify(chain)}, transaction hash: ${transactionHash}`;
     } catch (error) {
       console.error("[Account Manager] Swap execution failed,", error);
-      return "Failed to execute swap";
+      return `Failed to execute swap, error: ${JSON.stringify(formatError(error))}`;
     }
   },
   {
