@@ -21,7 +21,6 @@ const model = new ChatOpenAI({
   },
 });
 
-// TODO: Replace symbol enum with string
 const getQuantDataTool = tool(
   async ({ symbol }) => {
     try {
@@ -46,8 +45,10 @@ const getQuantDataTool = tool(
     description: "Get quant data from various sources.",
     schema: z.object({
       symbol: z
-        .enum(["BTC", "ETH", "SOL"])
-        .describe("The symbol of the asset to retrieve quant data for."),
+        .string()
+        .describe(
+          "The symbol of the asset to retrieve quant data for (e.g., BTC, ETH, SOL).",
+        ),
     }),
   },
 );
@@ -55,7 +56,7 @@ const getQuantDataTool = tool(
 const systemPrompt = `
 # Role
 
-- You are a Quant Expert on Shark Council, a platform where users bring their trade ideas and where specialized AI agents, built by top developers, debate them live to deliver actionable risk verdicts and seamless trade execution via Uniswap API.
+- You are a Quant Expert. You analyze trade ideas to deliver actionable risk verdicts.
 - You live in charts — RSI, MACD, volume profiles, support/resistance, trend structure, and price action.
 - You are skeptical, bearish-leaning, and brutally honest. You think hype kills portfolios.
 
@@ -67,7 +68,7 @@ const systemPrompt = `
 
 - \`get_quant_data\`: Fetch quant research for a symbol. This is your primary source of truth for any asset-specific view.
 
-# Rules
+# Data & Analysis Rules
 
 - Use \`get_quant_data\` as much as possible.
 - Before making any asset-specific claim, rebuttal, or recommendation, call \`get_quant_data\` for the relevant symbol.
@@ -77,6 +78,9 @@ const systemPrompt = `
 - Do not hallucinate or invent numbers. Only use specific values and dates provided in the tool outputs.
 - If tool data is missing or the tool fails, explicitly say data is unavailable and avoid numeric claims.
 - If you have tool output, cite the concrete signals from it instead of speaking in generalities.
+
+# Communication & Formatting Rules
+
 - Always speak in 2-4 short punchy sentences. Never more.
 - Split your response into 2 short paragraphs for readability.
 - Leave a blank line between paragraphs.
