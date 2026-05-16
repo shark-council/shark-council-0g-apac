@@ -4,7 +4,7 @@ import { createFailedApiResponse, createSuccessApiResponse } from "@/lib/api";
 import { Debate } from "@/types/debate";
 import { ObjectId } from "bson";
 import { NextRequest } from "next/server";
-import { createWalletClient, http, publicActions } from "viem";
+import { createPublicClient, createWalletClient, http } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import z from "zod";
 
@@ -24,14 +24,18 @@ export async function POST(request: NextRequest) {
       return createFailedApiResponse({ message: "Invalid request body" }, 400);
     }
 
-    // Define wallet client
+    // Define public and wallet clients
+    const publicClient = createPublicClient({
+      chain: zerogConfig.chain,
+      transport: http(zerogConfig.chain.rpcUrls.default.http[0]),
+    });
     const accountPrivateKey = process.env.ACCOUNT_PRIVATE_KEY as `0x${string}`;
     const account = privateKeyToAccount(accountPrivateKey);
     const walletClient = createWalletClient({
       account,
       chain: zerogConfig.chain,
       transport: http(zerogConfig.chain.rpcUrls.default.http[0]),
-    }).extend(publicActions);
+    });
 
     // Send fee
     const txHash = await walletClient.sendTransaction({
@@ -40,10 +44,9 @@ export async function POST(request: NextRequest) {
     });
     console.log(`[Debates API] Fee transaction sent, hash: ${txHash}`);
 
-    await walletClient.waitForTransactionReceipt({
+    // Wait for fee transaction confirmation
+    await publicClient.waitForTransactionReceipt({
       hash: txHash,
-      retryCount: 120,
-      retryDelay: 1000,
     });
     console.log("[Debates API] Fee transaction confirmed");
 

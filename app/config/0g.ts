@@ -26,7 +26,7 @@ const zerogTestnet = defineChain({
   nativeCurrency: { name: "0G", symbol: "0G", decimals: 18 },
   rpcUrls: {
     default: {
-      http: ["https://evmrpc-testnet.0g.ai"],
+      http: [process.env.NEXT_PUBLIC_ZEROG_TESTNET_RPC_URL as string],
     },
   },
   blockExplorers: {
@@ -44,7 +44,7 @@ const zerogMainnet = defineChain({
   nativeCurrency: { name: "0G", symbol: "0G", decimals: 18 },
   rpcUrls: {
     default: {
-      http: ["https://evmrpc.0g.ai"],
+      http: [process.env.NEXT_PUBLIC_ZEROG_MAINNET_RPC_URL as string],
     },
   },
   blockExplorers: {

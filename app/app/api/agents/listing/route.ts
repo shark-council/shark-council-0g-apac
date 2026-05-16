@@ -3,7 +3,12 @@ import { zerogConfig } from "@/config/0g";
 import { uploadTextTo0gStorage } from "@/lib/0g-storage";
 import { createFailedApiResponse, createSuccessApiResponse } from "@/lib/api";
 import { NextRequest } from "next/server";
-import { createWalletClient, http, parseEventLogs, publicActions } from "viem";
+import {
+  createPublicClient,
+  createWalletClient,
+  http,
+  parseEventLogs,
+} from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import z from "zod";
 
@@ -27,17 +32,21 @@ export async function POST(request: NextRequest) {
       return createFailedApiResponse({ message: "Invalid request body" }, 400);
     }
 
-    // Define wallet client
+    // Define public and wallet clients
+    const publicClient = createPublicClient({
+      chain: zerogConfig.chain,
+      transport: http(zerogConfig.chain.rpcUrls.default.http[0]),
+    });
     const accountPrivateKey = process.env.ACCOUNT_PRIVATE_KEY as `0x${string}`;
     const account = privateKeyToAccount(accountPrivateKey);
     const walletClient = createWalletClient({
       account,
       chain: zerogConfig.chain,
       transport: http(zerogConfig.chain.rpcUrls.default.http[0]),
-    }).extend(publicActions);
+    });
 
     // Get mint fee
-    const mintFee = await walletClient.readContract({
+    const mintFee = await publicClient.readContract({
       address: zerogConfig.addresses.agenticIdentity,
       abi: agenticIdentityAbi,
       functionName: "mintFee",
@@ -61,7 +70,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Mint agentic identity
-    const { request: iMintRequest } = await walletClient.simulateContract({
+    const { request: iMintRequest } = await publicClient.simulateContract({
       address: zerogConfig.addresses.agenticIdentity,
       abi: agenticIdentityAbi,
       functionName: "iMint",
@@ -71,7 +80,7 @@ export async function POST(request: NextRequest) {
     });
     const iMintTxHash = await walletClient.writeContract(iMintRequest);
     console.log(`[Agent Listing API] iMint transaction hash: ${iMintTxHash}`);
-    const receipt = await walletClient.waitForTransactionReceipt({
+    const receipt = await publicClient.waitForTransactionReceipt({
       hash: iMintTxHash,
     });
     console.log("[Agent Listing API] iMint transaction confirmed");
@@ -102,7 +111,7 @@ export async function POST(request: NextRequest) {
     const tokenURI = `data:application/json;base64,${metadataBase64}`;
 
     // Set token URI
-    const { request: setTokenURIRequest } = await walletClient.simulateContract(
+    const { request: setTokenURIRequest } = await publicClient.simulateContract(
       {
         address: zerogConfig.addresses.agenticIdentity,
         abi: agenticIdentityAbi,
@@ -116,7 +125,7 @@ export async function POST(request: NextRequest) {
     console.log(
       `[Agent Listing API] setTokenURI transaction hash: ${setTokenURITxHash}`,
     );
-    await walletClient.waitForTransactionReceipt({
+    await publicClient.waitForTransactionReceipt({
       hash: setTokenURITxHash,
     });
     console.log("[Agent Listing API] setTokenURI transaction confirmed");
