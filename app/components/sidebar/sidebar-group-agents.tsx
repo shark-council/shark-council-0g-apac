@@ -45,7 +45,7 @@ export function SidebarGroupAgents() {
             <SidebarMenuButton asChild>
               <Link
                 href={
-                  zerogConfig.chain.blockExplorers.default.url +
+                  zerogConfig.chain.blockExplorers?.default.url +
                   "/nft/" +
                   zerogConfig.contracts.agenticIdentity +
                   "/" +
