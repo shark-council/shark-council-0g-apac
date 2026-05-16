@@ -88,7 +88,6 @@ export function DebateDetailsUniswapTradeCard(props: {
         )}
         {/* Exit */}
         <p className="font-bold mt-6">Exit</p>
-        {/* TODO: Implement */}
         {props.debate.uniswapTrade.exit ? (
           <Spinner className="mt-2" />
         ) : (
@@ -96,7 +95,6 @@ export function DebateDetailsUniswapTradeCard(props: {
         )}
         {/* PnL */}
         <p className="font-bold mt-6">PnL</p>
-        {/* TODO: Implement */}
         {props.debate.uniswapTrade.pnlPercentage ? (
           <Spinner className="mt-2" />
         ) : (
