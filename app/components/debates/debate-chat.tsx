@@ -221,13 +221,15 @@ export function DebateChat(props: { debate: Debate; className?: ClassValue }) {
         </div>
       </CardContent>
       {/* Footer */}
-      <CardFooter ref={bottomRef}>
-        <DebateChatInput
-          onSubmit={handleSendMessage}
-          disabled={isLoading}
-          className="w-full"
-        />
-      </CardFooter>
+      {!props.debate.uniswapTrade && (
+        <CardFooter ref={bottomRef}>
+          <DebateChatInput
+            onSubmit={handleSendMessage}
+            disabled={isLoading}
+            className="w-full"
+          />
+        </CardFooter>
+      )}
     </Card>
   );
 }
