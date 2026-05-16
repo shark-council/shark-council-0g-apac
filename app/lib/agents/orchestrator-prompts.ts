@@ -79,6 +79,7 @@ export function buildVerdictPrompt(
 # Rules
 
 - The verdict must explain who made the stronger case, what the risk verdict is, and what the trader should do.
+- If both experts indicate that data is unavailable, do not declare a winner. Instead, explain that a verdict cannot be reached due to lack of data, advise against taking a blind trade, and mark the decision as REJECT.
 - Keep the verdict to 3-5 sentences.
 - Format the verdict into 2 short paragraphs with a blank line between them.
 - Be authoritative. No hedging.
