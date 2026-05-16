@@ -6,6 +6,7 @@ type zerogConfig = {
   chain: Chain;
   contracts: {
     agenticIdentity: `0x${string}`;
+    feeManager: `0x${string}`;
   };
   compute: {
     model: string;
@@ -59,6 +60,7 @@ const zerogConfigTestnet: zerogConfig = {
   chain: zerogTestnet,
   contracts: {
     agenticIdentity: "0xad946b989a831eea0bb8d9c62b7ef34487996fdb",
+    feeManager: "0x4306D7a79265D2cb85Db0c5a55ea5F4f6F73C4B1",
   },
   compute: {
     model: "qwen/qwen-2.5-7b-instruct",
@@ -76,6 +78,7 @@ const zerogConfigMainnet: zerogConfig = {
   chain: zerogMainnet,
   contracts: {
     agenticIdentity: "0x3fd101f7722e9b4168bff1ea17d51759196ea80d",
+    feeManager: "0x4306D7a79265D2cb85Db0c5a55ea5F4f6F73C4B1",
   },
   compute: {
     model: "qwen/qwen3-vl-30b-a3b-instruct",

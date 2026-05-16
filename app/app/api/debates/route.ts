@@ -1,11 +1,13 @@
+import { zerogConfig } from "@/config/0g";
 import { debateConfig } from "@/config/debate";
 import { createFailedApiResponse, createSuccessApiResponse } from "@/lib/api";
 import { Debate } from "@/types/debate";
 import { ObjectId } from "bson";
 import { NextRequest } from "next/server";
+import { createWalletClient, http, publicActions } from "viem";
+import { privateKeyToAccount } from "viem/accounts";
 import z from "zod";
 
-// TODO: Send 0G fee to the contract
 export async function POST(request: NextRequest) {
   try {
     console.log("[Debates API] Handling post request...");
@@ -21,6 +23,29 @@ export async function POST(request: NextRequest) {
     if (!bodyParseResult.success) {
       return createFailedApiResponse({ message: "Invalid request body" }, 400);
     }
+
+    // Define wallet client
+    const accountPrivateKey = process.env.ACCOUNT_PRIVATE_KEY as `0x${string}`;
+    const account = privateKeyToAccount(accountPrivateKey);
+    const walletClient = createWalletClient({
+      account,
+      chain: zerogConfig.chain,
+      transport: http(zerogConfig.chain.rpcUrls.default.http[0]),
+    }).extend(publicActions);
+
+    // Send fee
+    const txHash = await walletClient.sendTransaction({
+      to: zerogConfig.contracts.feeManager,
+      value: BigInt(debateConfig.defaultFee.tokenAmount),
+    });
+    console.log(`[Debates API] Fee transaction sent, hash: ${txHash}`);
+
+    await walletClient.waitForTransactionReceipt({
+      hash: txHash,
+      retryCount: 120,
+      retryDelay: 1000,
+    });
+    console.log("[Debates API] Fee transaction confirmed");
 
     const debate: Debate = {
       id: new ObjectId().toHexString(),
