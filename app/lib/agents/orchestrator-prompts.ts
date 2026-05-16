@@ -26,7 +26,7 @@ Based ONLY on the conversation history, determine the user's intent:
 - "debate": The user has a trading idea about a specific token and asks for analysis, opinions, or details about a market situation that requires expert debate. Extract a clear, comprehensive topic for the debate from the history and populate 'topic'.
 - "account-management": The user is asking to execute a trade/swap, asking for account manager wallet information (address, native balance, token balance), asking about supported swap chains, or asking about supported swap tokens. Extract the actionable request or specific details into 'accountManagement'.
 
-Rules:
+# Rules
 
 - Only classify as "account-management" when the user is asking to execute a trade, asking for wallet details (address or balances), or inquiring about supported swap chains/tokens.
 - If the user asks for both wallet information and market analysis, prefer "debate" only when the core request is analysis. Prefer "account-management" when the core request is to inspect wallet details, check balances, list supported swap chains/tokens, or execute a trade.
