@@ -73,12 +73,10 @@ const zerogConfigMainnet: zerogConfig = {
   contracts: {
     agenticIdentity: "0x3fd101f7722e9b4168bff1ea17d51759196ea80d",
   },
-  // TODO: Replace with mainnet
   compute: {
     model: "qwen/qwen-2.5-7b-instruct",
     baseUrl: "https://router-api-testnet.integratenetwork.work/v1",
   },
-  // TODO: Replace with mainnet
   storage: {
     rpcUrl: "https://evmrpc-testnet.0g.ai",
     indexerRpc: "https://indexer-storage-testnet-turbo.0g.ai",
