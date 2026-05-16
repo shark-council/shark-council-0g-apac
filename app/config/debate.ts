@@ -5,7 +5,7 @@ const defaultFee: DebateFee = {
   chainName: zerogConfig.chain.name,
   tokenSymbol: zerogConfig.chain.nativeCurrency.symbol,
   tokenDecimals: zerogConfig.chain.nativeCurrency.decimals,
-  tokenAmount: BigInt("100000000000000000"),
+  tokenAmount: "100000000000000000",
 };
 
 const defaultAgentIds = ["0", "1"];
@@ -14,7 +14,7 @@ const defaultAgentReward: DebateAgentReward = {
   chainName: zerogConfig.chain.name,
   tokenSymbol: zerogConfig.chain.nativeCurrency.symbol,
   tokenDecimals: zerogConfig.chain.nativeCurrency.decimals,
-  tokenAmount: BigInt("70000000000000000"),
+  tokenAmount: "70000000000000000",
 };
 
 const demoDebate1: Debate = {
@@ -125,7 +125,7 @@ const demoDebate1: Debate = {
     entry: {
       date: new Date("2026-05-15T07:59:19Z"),
       tokenPrice: 80751.1,
-      tokenAmount: BigInt("123"),
+      tokenAmount: "123",
       transactionHash:
         "0x7e9925168b2035197cc7e4cb84408bf42c1aa8b2f51ad7a005456f6f5e8894dd",
       transactionUrl:

@@ -2,14 +2,14 @@ export type DebateFee = {
   chainName: string;
   tokenSymbol: string;
   tokenDecimals: number;
-  tokenAmount: bigint;
+  tokenAmount: string;
 };
 
 export type DebateAgentReward = {
   chainName: string;
   tokenSymbol: string;
   tokenDecimals: number;
-  tokenAmount: bigint;
+  tokenAmount: string;
 };
 
 export type DebateChatMessageRole =
@@ -37,7 +37,7 @@ export type DebateDexScreenerData = {
 export type DebateUniswapTradeEntry = {
   date: Date;
   tokenPrice: number;
-  tokenAmount: bigint;
+  tokenAmount: string;
   transactionHash: string;
   transactionUrl: string;
 };
@@ -45,7 +45,7 @@ export type DebateUniswapTradeEntry = {
 export type DebateUniswapTradeExit = {
   date: Date;
   tokenPrice: number;
-  tokenAmount: bigint;
+  tokenAmount: string;
   transactionHash: string;
   transactionUrl: string;
 };

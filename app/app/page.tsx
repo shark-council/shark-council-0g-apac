@@ -19,8 +19,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { debateConfig } from "@/config/debate";
 import { useAgents } from "@/hooks/use-agents";
 import { handleError } from "@/lib/error";
+import { ApiResponse } from "@/types/api";
+import { Debate } from "@/types/debate";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ObjectId } from "bson";
+import axios from "axios";
 import {
   BarChart3Icon,
   BotIcon,
@@ -37,7 +39,7 @@ import { Controller, useForm } from "react-hook-form";
 import { formatUnits } from "viem";
 import z from "zod";
 
-// TODO: Allow selection of active agents only
+// TODO: Allow selection of verified agents only
 export default function IndexPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,24 +58,32 @@ export default function IndexPage() {
     },
   });
 
-  // TODO: Take 0G fee from user's wallet instead of just simulating it
   async function handleSubmit(data: z.infer<typeof formSchema>) {
     try {
       console.log("[Component] Submitting idea...");
       setIsSubmitting(true);
 
-      const id = new ObjectId();
+      const response = await axios.post<ApiResponse<{ debate: Debate }>>(
+        "/api/debates",
+        {
+          idea: data.idea,
+          agents: data.agents,
+        },
+      );
+
+      if (!response.data.data?.debate) {
+        throw new Error("Failed to create debate");
+      }
+      const debate = response.data.data.debate;
 
       const params = new URLSearchParams({
-        idea: data.idea,
+        idea: debate.idea,
       });
-      data.agents.forEach((agentId) => {
+      debate.agentIds.forEach((agentId) => {
         params.append("agent", agentId);
       });
 
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-
-      router.push(`/debates/${id.toString()}?${params.toString()}`);
+      router.push(`/debates/${debate.id.toString()}?${params.toString()}`);
     } catch (error) {
       handleError({ error, errorContext: "Failed to submit idea" });
       setIsSubmitting(false);
@@ -276,7 +286,7 @@ export default function IndexPage() {
               {isSubmitting && <Spinner />}
               Start Debate (
               {formatUnits(
-                debateConfig.defaultFee.tokenAmount,
+                BigInt(debateConfig.defaultFee.tokenAmount),
                 debateConfig.defaultFee.tokenDecimals,
               )}{" "}
               0G Fee)

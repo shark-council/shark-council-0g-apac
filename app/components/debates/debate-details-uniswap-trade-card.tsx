@@ -65,7 +65,7 @@ export function DebateDetailsUniswapTradeCard(props: {
               <p className="text-muted-foreground">Amount:</p>
               <p>
                 {formatUnits(
-                  props.debate.uniswapTrade.entry.tokenAmount,
+                  BigInt(props.debate.uniswapTrade.entry.tokenAmount),
                   props.debate.uniswapTrade.tokenDecimals,
                 )}
               </p>

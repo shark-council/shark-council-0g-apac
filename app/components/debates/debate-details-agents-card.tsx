@@ -55,7 +55,7 @@ export function DebateDetailsAgentsCard(props: {
           <p className="text-muted-foreground">0G Rewards:</p>
           <p>
             {formatUnits(
-              props.debate.agentReward.tokenAmount,
+              BigInt(props.debate.agentReward.tokenAmount),
               props.debate.agentReward.tokenDecimals,
             )}{" "}
             {props.debate.agentReward.tokenSymbol}
@@ -63,7 +63,7 @@ export function DebateDetailsAgentsCard(props: {
           <p className="text-muted-foreground">/</p>
           <p className="text-muted-foreground">
             {formatUnits(
-              props.debate.fee.tokenAmount,
+              BigInt(props.debate.fee.tokenAmount),
               props.debate.fee.tokenDecimals,
             )}{" "}
             {props.debate.fee.tokenSymbol}
