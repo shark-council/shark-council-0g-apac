@@ -90,6 +90,10 @@ export default function AgentListingPage() {
     // },
   });
 
+  const [capabilitiesInput, setCapabilitiesInput] = useState(
+    form.getValues("capabilities").join(", "),
+  );
+
   async function handleSubmit(data: z.infer<typeof formSchema>) {
     try {
       console.log("[Component] Listing agent...");
@@ -229,15 +233,18 @@ export default function AgentListingPage() {
                     disabled={isSubmitting}
                     placeholder="quant, charting, crypto"
                     autoComplete="off"
-                    onChange={(e) =>
+                    onChange={(e) => {
+                      const value = e.target.value;
+
+                      setCapabilitiesInput(value);
                       field.onChange(
-                        e.target.value
+                        value
                           .split(",")
-                          .map((t) => t.trim())
+                          .map((token) => token.trim())
                           .filter(Boolean),
-                      )
-                    }
-                    value={field.value?.join(", ") || ""}
+                      );
+                    }}
+                    value={capabilitiesInput}
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
