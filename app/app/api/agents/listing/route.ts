@@ -73,8 +73,6 @@ export async function POST(request: NextRequest) {
     console.log(`[Agent Listing API] iMint transaction hash: ${iMintTxHash}`);
     const receipt = await walletClient.waitForTransactionReceipt({
       hash: iMintTxHash,
-      retryCount: 120,
-      retryDelay: 1000,
     });
     console.log("[Agent Listing API] iMint transaction confirmed");
 
@@ -120,8 +118,6 @@ export async function POST(request: NextRequest) {
     );
     await walletClient.waitForTransactionReceipt({
       hash: setTokenURITxHash,
-      retryCount: 120,
-      retryDelay: 1000,
     });
     console.log("[Agent Listing API] setTokenURI transaction confirmed");
 
