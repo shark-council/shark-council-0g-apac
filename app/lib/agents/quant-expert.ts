@@ -34,6 +34,13 @@ const getQuantDataTool = tool(
         return JSON.stringify(data);
       }
 
+      if (symbol === "ETH") {
+        const { data } = await axios.get(
+          `${appConfig.baseUrl}/data/eth/quant.md`,
+        );
+        return JSON.stringify(data);
+      }
+
       return "No data";
     } catch (error) {
       console.error(
