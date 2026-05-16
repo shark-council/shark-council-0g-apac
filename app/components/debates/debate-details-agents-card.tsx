@@ -5,7 +5,6 @@ import { BotIcon } from "lucide-react";
 import { formatUnits } from "viem";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { Separator } from "../ui/separator";
 import { Spinner } from "../ui/spinner";
 
 export function DebateDetailsAgentsCard(props: {
