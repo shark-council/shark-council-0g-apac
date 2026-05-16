@@ -1,3 +1,4 @@
+import { appConfig } from "@/config/app";
 import { openRouterConfig } from "@/config/open-router";
 import { ApiResponse } from "@/types/api";
 import { ChatOpenAI } from "@langchain/openai";
@@ -16,10 +17,6 @@ type DebateRound = {
   thinkingLabel: string;
   instruction: string;
 };
-
-const BASE_URL = process.env.BASE_URL;
-const THINKING_DELAY_MS = 2200;
-const MESSAGE_DELAY_MS = 1400;
 
 const DEBATE_ROUNDS: DebateRound[] = [
   {
@@ -73,17 +70,11 @@ const determineIntentSchema = z.object({
     .describe("If intent is debate, a concise summary of the topic to debate"),
 });
 
-function delay(ms: number): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-}
-
 async function callDebateAgent(
   role: DebateAgentRole,
   prompt: string,
 ): Promise<string> {
-  const res = await fetch(`${BASE_URL}/api/agents/${role}`, {
+  const res = await fetch(`${appConfig.baseUrl}/api/agents/${role}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ message: prompt }),
@@ -96,7 +87,7 @@ async function callDebateAgent(
 }
 
 async function callAccountManagerAgent(message: string): Promise<string> {
-  const res = await fetch(`${BASE_URL}/api/agents/account-manager`, {
+  const res = await fetch(`${appConfig.baseUrl}/api/agents/account-manager`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ message }),
@@ -304,8 +295,6 @@ async function* handleDebate(topic: string): AsyncGenerator<string> {
       content: round.thinkingLabel,
     })}\n\n`;
 
-    await delay(THINKING_DELAY_MS);
-
     const prompt = buildDebateAgentPrompt(
       topic,
       debateHistory,
@@ -320,8 +309,6 @@ async function* handleDebate(topic: string): AsyncGenerator<string> {
       type: "message",
       content: response,
     })}\n\n`;
-
-    await delay(MESSAGE_DELAY_MS);
   }
 
   // Orchestrator delivers the verdict
@@ -330,8 +317,6 @@ async function* handleDebate(topic: string): AsyncGenerator<string> {
     type: "thinking",
     content: "Shark Council deliberates...",
   })}\n\n`;
-
-  await delay(THINKING_DELAY_MS);
 
   const verdictPrompt = buildVerdictPrompt(topic, debateHistory);
   const verdictResponse = await model.invoke([new HumanMessage(verdictPrompt)]);
@@ -355,8 +340,6 @@ async function* handleDebate(topic: string): AsyncGenerator<string> {
       type: "thinking",
       content: "Processing account management request...",
     })}\n\n`;
-
-    await delay(THINKING_DELAY_MS);
 
     try {
       const accountManagementResponse = await callAccountManagerAgent(
@@ -389,8 +372,6 @@ async function* handleAccountManagement(
     type: "thinking",
     content: "Processing account management request...",
   })}\n\n`;
-
-  await delay(THINKING_DELAY_MS);
 
   try {
     const response = await callAccountManagerAgent(accountManagement);

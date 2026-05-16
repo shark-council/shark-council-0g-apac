@@ -1,4 +1,5 @@
 import { zerogConfig } from "@/config/0g";
+import { appConfig } from "@/config/app";
 import { ChatOpenAI } from "@langchain/openai";
 import axios from "axios";
 import {
@@ -10,8 +11,6 @@ import {
 } from "langchain";
 import z from "zod";
 import { formatError } from "../error";
-
-const BASE_URL = process.env.BASE_URL;
 
 const model = new ChatOpenAI({
   model: zerogConfig.compute.model,
@@ -31,7 +30,9 @@ const getSentimentDataTool = tool(
       );
 
       if (symbol === "BTC") {
-        const { data } = await axios.get(`${BASE_URL}/data/btc/sentiment.md`);
+        const { data } = await axios.get(
+          `${appConfig.baseUrl}/data/btc/sentiment.md`,
+        );
         return JSON.stringify(data);
       }
 

@@ -47,8 +47,6 @@ This is a Next.js project for Shark Council.
 ```shell
 NEXT_PUBLIC_ACCOUNT_ADDRESS=""
 
-BASE_URL=""
-
 ZEROG_TESTNET_COMPUTE_API_KEY=""
 ZEROG_MAINNET_COMPUTE_API_KEY=""
 OPEN_ROUTER_API_KEY=""

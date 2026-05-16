@@ -1,4 +1,5 @@
 import { zerogConfig } from "@/config/0g";
+import { appConfig } from "@/config/app";
 import { ChatOpenAI } from "@langchain/openai";
 import axios from "axios";
 import {
@@ -10,8 +11,6 @@ import {
 } from "langchain";
 import z from "zod";
 import { formatError } from "../error";
-
-const BASE_URL = process.env.BASE_URL;
 
 const model = new ChatOpenAI({
   model: zerogConfig.compute.model,
@@ -29,7 +28,9 @@ const getQuantDataTool = tool(
       console.log(`[Quant Expert] Getting quant data, symbol: ${symbol}...`);
 
       if (symbol === "BTC") {
-        const { data } = await axios.get(`${BASE_URL}/data/btc/quant.md`);
+        const { data } = await axios.get(
+          `${appConfig.baseUrl}/data/btc/quant.md`,
+        );
         return JSON.stringify(data);
       }
 
