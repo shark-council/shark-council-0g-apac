@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/field";
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
+import { agentConfig } from "@/config/agent";
 import { debateConfig } from "@/config/debate";
 import { useAgents } from "@/hooks/use-agents";
 import { handleError } from "@/lib/error";
@@ -24,6 +25,7 @@ import { Debate } from "@/types/debate";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import {
+  BadgeCheckIcon,
   BarChart3Icon,
   BotIcon,
   CheckCheckIcon,
@@ -39,7 +41,6 @@ import { Controller, useForm } from "react-hook-form";
 import { formatUnits } from "viem";
 import z from "zod";
 
-// TODO: Allow selection of verified agents only
 export default function IndexPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -173,19 +174,23 @@ export default function IndexPage() {
                     )}
                     {agents?.map((agent) => {
                       const isChecked = field.value.includes(agent.id);
+                      const isVerified = agentConfig.verifiedIds.includes(
+                        agent.id,
+                      );
                       return (
                         <Field
                           key={agent.id}
                           orientation="horizontal"
                           data-invalid={fieldState.invalid}
-                          data-disabled={isSubmitting}
+                          data-disabled={isSubmitting || !isVerified}
+                          className={!isVerified ? "opacity-50 grayscale" : ""}
                         >
                           <Checkbox
                             id={agent.id}
                             name={field.name}
                             checked={isChecked}
                             aria-invalid={fieldState.invalid}
-                            disabled={isSubmitting}
+                            disabled={isSubmitting || !isVerified}
                             onCheckedChange={(
                               checked: boolean | "indeterminate",
                             ) => {
@@ -213,8 +218,20 @@ export default function IndexPage() {
                           </Avatar>
                           <FieldContent>
                             {/* Name */}
-                            <FieldLabel htmlFor={agent.id}>
+                            <FieldLabel
+                              htmlFor={agent.id}
+                              className="flex items-center gap-2"
+                            >
                               <p>{agent.identity.name}</p>
+                              {isVerified && (
+                                <Badge
+                                  variant="secondary"
+                                  data-icon="inline-start"
+                                >
+                                  <BadgeCheckIcon />
+                                  Verified
+                                </Badge>
+                              )}
                             </FieldLabel>
                             {/* Description */}
                             <FieldDescription>
