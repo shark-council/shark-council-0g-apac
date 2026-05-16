@@ -10,10 +10,12 @@ type zerogConfig = {
   compute: {
     model: string;
     baseUrl: string;
+    testnet: boolean;
   };
   storage: {
     rpcUrl: string;
     indexerRpc: string;
+    testnet: boolean;
   };
 };
 
@@ -61,10 +63,12 @@ const zerogConfigTestnet: zerogConfig = {
   compute: {
     model: "qwen/qwen-2.5-7b-instruct",
     baseUrl: "https://router-api-testnet.integratenetwork.work/v1",
+    testnet: true,
   },
   storage: {
     rpcUrl: "https://evmrpc-testnet.0g.ai",
     indexerRpc: "https://indexer-storage-testnet-turbo.0g.ai",
+    testnet: true,
   },
 };
 
@@ -74,12 +78,14 @@ const zerogConfigMainnet: zerogConfig = {
     agenticIdentity: "0x3fd101f7722e9b4168bff1ea17d51759196ea80d",
   },
   compute: {
-    model: "qwen/qwen-2.5-7b-instruct",
-    baseUrl: "https://router-api-testnet.integratenetwork.work/v1",
+    model: "qwen/qwen3-vl-30b-a3b-instruct",
+    baseUrl: "https://router-api.0g.ai/v1",
+    testnet: false,
   },
   storage: {
     rpcUrl: "https://evmrpc.0g.ai",
     indexerRpc: "https://indexer-storage-turbo.0g.ai",
+    testnet: false,
   },
 };
 
