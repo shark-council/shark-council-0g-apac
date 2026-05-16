@@ -1,15 +1,9 @@
 import { agenticIdentityAbi } from "@/abi/agentic-identity";
 import { zerogConfig } from "@/config/0g";
+import { uploadTextTo0gStorage } from "@/lib/0g-storage";
 import { createFailedApiResponse, createSuccessApiResponse } from "@/lib/api";
 import { NextRequest } from "next/server";
-import {
-  createWalletClient,
-  http,
-  keccak256,
-  parseEventLogs,
-  publicActions,
-  toHex,
-} from "viem";
+import { createWalletClient, http, parseEventLogs, publicActions } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import z from "zod";
 
@@ -49,13 +43,22 @@ export async function POST(request: NextRequest) {
       functionName: "mintFee",
     });
 
-    // Prepare data for minting
-    const datas = [
-      {
-        dataDescription: "intelligent_data",
-        dataHash: keccak256(toHex(bodyParseResult.data.intelligentData)),
-      },
-    ];
+    const { uploadTx } = await uploadTextTo0gStorage(body.intelligentData);
+
+    const datas: {
+      dataDescription: string;
+      dataHash: `0x${string}`;
+    }[] = [];
+    if ("txHash" in uploadTx && "rootHash" in uploadTx) {
+      datas.push({
+        dataDescription: "0g_storage_root_hash",
+        dataHash: uploadTx.rootHash as `0x${string}`,
+      });
+      datas.push({
+        dataDescription: "0g_storage_tx_hash",
+        dataHash: uploadTx.txHash as `0x${string}`,
+      });
+    }
 
     // Mint agentic identity
     const { request: iMintRequest } = await walletClient.simulateContract({
