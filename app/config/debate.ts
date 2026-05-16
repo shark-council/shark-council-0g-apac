@@ -140,5 +140,5 @@ export const debateConfig = {
   defaultFee,
   defaultAgentIds,
   defaultAgentReward,
-  demoDebates: demoDebates,
+  demoDebates,
 };
