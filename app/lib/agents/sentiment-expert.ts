@@ -12,6 +12,8 @@ import {
 import z from "zod";
 import { formatError } from "../error";
 
+const SUPPORTED_TOKENS = ["BTC", "ETH"];
+
 const model = new ChatOpenAI({
   model: zerogConfig.compute.model,
   apiKey: zerogConfig.compute.testnet
@@ -29,21 +31,14 @@ const getSentimentDataTool = tool(
         `[Sentiment Expert] Getting sentiment data, symbol: ${symbol}...`,
       );
 
-      if (symbol === "BTC") {
-        const { data } = await axios.get(
-          `${appConfig.baseUrl}/data/btc/sentiment.md`,
-        );
-        return JSON.stringify(data);
+      if (!SUPPORTED_TOKENS.includes(symbol)) {
+        return `Data is not available for this token. It is only available for the following supported tokens: ${SUPPORTED_TOKENS.join(", ")}.`;
       }
 
-      if (symbol === "ETH") {
-        const { data } = await axios.get(
-          `${appConfig.baseUrl}/data/eth/sentiment.md`,
-        );
-        return JSON.stringify(data);
-      }
-
-      return "No data";
+      const { data } = await axios.get(
+        `${appConfig.baseUrl}/data/${symbol.toLowerCase()}/sentiment.md`,
+      );
+      return JSON.stringify(data);
     } catch (error) {
       console.error(
         `[Sentiment Expert] Getting sentiment data failed, symbol: ${symbol},`,

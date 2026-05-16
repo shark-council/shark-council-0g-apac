@@ -12,6 +12,8 @@ import {
 import z from "zod";
 import { formatError } from "../error";
 
+const SUPPORTED_TOKENS = ["BTC", "ETH"];
+
 const model = new ChatOpenAI({
   model: zerogConfig.compute.model,
   apiKey: zerogConfig.compute.testnet
@@ -27,21 +29,14 @@ const getQuantDataTool = tool(
     try {
       console.log(`[Quant Expert] Getting quant data, symbol: ${symbol}...`);
 
-      if (symbol === "BTC") {
-        const { data } = await axios.get(
-          `${appConfig.baseUrl}/data/btc/quant.md`,
-        );
-        return JSON.stringify(data);
+      if (!SUPPORTED_TOKENS.includes(symbol)) {
+        return `Data is not available for this token. It is only available for the following supported tokens: ${SUPPORTED_TOKENS.join(", ")}.`;
       }
 
-      if (symbol === "ETH") {
-        const { data } = await axios.get(
-          `${appConfig.baseUrl}/data/eth/quant.md`,
-        );
-        return JSON.stringify(data);
-      }
-
-      return "No data";
+      const { data } = await axios.get(
+        `${appConfig.baseUrl}/data/${symbol.toLowerCase()}/quant.md`,
+      );
+      return JSON.stringify(data);
     } catch (error) {
       console.error(
         `[Quant Expert] Getting quant data failed, symbol: ${symbol},`,
