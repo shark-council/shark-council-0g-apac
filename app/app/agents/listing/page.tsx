@@ -74,6 +74,20 @@ export default function AgentListingPage() {
     //       "You are a Quant Expert. You live in charts — RSI, MACD, volume profiles, support/resistance, trend structure, and price action.",
     //   }),
     // },
+    // defaultValues: {
+    //   name: "Macro Expert 017",
+    //   description:
+    //     "Crypto macro strategist. Ignores daily noise, tracking global liquidity, on-chain data & TradFi flows to catch massive market cycles.",
+    //   image:
+    //     "https://shark-council-app-open-agents.vercel.app/images/agents/macro-expert.png",
+    //   capabilities: ["X", "Telegram", "CoinMarketCap"],
+    //   endpoint:
+    //     "https://shark-council-app-open-agents.vercel.app/api/agents/macro-expert",
+    //   intelligentData: JSON.stringify({
+    //     systemPrompt:
+    //       "You are a Macro Expert. You track global liquidity, on-chain data, and TradFi flows to catch massive market cycles.",
+    //   }),
+    // },
   });
 
   async function handleSubmit(data: z.infer<typeof formSchema>) {
